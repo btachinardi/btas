@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { X, Download, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import MarkdownViewer from './MarkdownViewer';
 import { CVDocument, CoverLetterDocument } from './pdf';
+import { useLocale } from '../contexts/locale.context';
 import cvContent from '../references/cv.md?raw';
 import coverLetterContent from '../references/cover-letter.md?raw';
 
@@ -15,21 +16,22 @@ interface DocumentModalProps {
 
 const DocumentModal: React.FC<DocumentModalProps> = ({ type, isOpen }) => {
   const navigate = useNavigate();
+  const { locale } = useLocale();
 
-  const config = {
+  const config = useMemo(() => ({
     cv: {
       title: 'Curriculum Vitae',
       content: cvContent,
-      pdfDocument: <CVDocument />,
+      pdfDocument: <CVDocument locale={locale} />,
       filename: 'Bruno_Tachinardi_CV.pdf',
     },
     'cover-letter': {
       title: 'Cover Letter',
       content: coverLetterContent,
-      pdfDocument: <CoverLetterDocument />,
+      pdfDocument: <CoverLetterDocument locale={locale} />,
       filename: 'Bruno_Tachinardi_Cover_Letter.pdf',
     },
-  };
+  }), [locale]);
 
   const { title, content, pdfDocument, filename } = config[type];
 

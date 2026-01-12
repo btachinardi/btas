@@ -105,37 +105,114 @@
     }
   ],
 
+  "skillGroups": [
+    { "id": "llm-integration", "name": "LLM Integration", "categoryId": "ai-ml" },
+    { "id": "deep-learning", "name": "Deep Learning", "categoryId": "ai-ml" },
+    { "id": "ml-tools", "name": "ML Tools & Environments", "categoryId": "ai-ml" },
+    { "id": "vector-databases", "name": "Vector Databases", "categoryId": "ai-ml" },
+    { "id": "signal-processing", "name": "Signal Processing", "categoryId": "ai-ml" },
+    { "id": "js-frameworks", "name": "JavaScript Frameworks", "categoryId": "frontend" },
+    { "id": "js-languages", "name": "Languages", "categoryId": "frontend" },
+    { "id": "game-engines", "name": "Game Engines", "categoryId": "frontend" },
+    { "id": "legacy-frontend", "name": "Legacy Technologies", "categoryId": "frontend" },
+    { "id": "mobile-platforms", "name": "Mobile Platforms", "categoryId": "frontend" },
+    { "id": "node-ecosystem", "name": "Node.js Ecosystem", "categoryId": "backend" },
+    { "id": "dotnet-ecosystem", "name": ".NET Ecosystem", "categoryId": "backend" },
+    { "id": "databases", "name": "Databases", "categoryId": "backend" },
+    { "id": "backend-languages", "name": "Languages", "categoryId": "backend" },
+    { "id": "api-standards", "name": "API Standards", "categoryId": "backend" },
+    { "id": "communication-apis", "name": "Communication APIs", "categoryId": "backend" },
+    { "id": "cloud-platforms", "name": "Cloud Platforms", "categoryId": "devops" },
+    { "id": "containerization", "name": "Containerization", "categoryId": "devops" },
+    { "id": "ci-cd", "name": "CI/CD", "categoryId": "devops" },
+    { "id": "version-control", "name": "Version Control", "categoryId": "devops" },
+    { "id": "scripting", "name": "Scripting & Automation", "categoryId": "devops" },
+    { "id": "bioinformatics", "name": "Bioinformatics", "categoryId": "devops" },
+    { "id": "regulatory", "name": "Regulatory Compliance", "categoryId": "healthcare" },
+    { "id": "health-standards", "name": "Health Data Standards", "categoryId": "healthcare" },
+    { "id": "design-tools", "name": "Design Tools", "categoryId": "product" },
+    { "id": "video-tools", "name": "Video & Motion", "categoryId": "product" },
+    { "id": "methodologies", "name": "Methodologies", "categoryId": "product" },
+    { "id": "e-learning", "name": "E-Learning Standards", "categoryId": "product" }
+  ],
+
   "skills": [
-    { "id": "llm-integration", "name": "LLM Integration (LangChain, OpenAI API, RAG, MCP)", "categoryId": "ai-ml", "proficiency": 95 },
-    { "id": "deep-learning", "name": "Deep Learning (TensorFlow, Keras, CNN)", "categoryId": "ai-ml", "proficiency": 90 },
-    { "id": "vector-databases", "name": "Vector Databases (Pinecone)", "categoryId": "ai-ml", "proficiency": 85 },
-    { "id": "ml-tools", "name": "Tools (Jupyter Notebook, Google Colab)", "categoryId": "ai-ml", "proficiency": 85 },
-    { "id": "react-vue", "name": "React / Vue (TypeScript)", "categoryId": "frontend", "proficiency": 90 },
-    { "id": "unity3d", "name": "Unity3D (C#) Cross-Platform Apps", "categoryId": "frontend", "proficiency": 90 },
-    { "id": "nodejs", "name": "Node.js (NestJS, Express)", "categoryId": "backend", "proficiency": 90 },
-    { "id": "dotnet", "name": ".NET Core / Entity Framework", "categoryId": "backend", "proficiency": 85 },
-    { "id": "databases", "name": "PostgreSQL / MongoDB / SQL Server", "categoryId": "backend", "proficiency": 85 },
-    { "id": "cloud-platforms", "name": "Cloud Platforms (Azure, GCP, AWS)", "categoryId": "devops", "proficiency": 85 },
-    { "id": "docker", "name": "Containerization (Docker, Docker Compose)", "categoryId": "devops", "proficiency": 85 },
-    { "id": "cicd", "name": "CI/CD (GitHub Actions, Mobile Deployment)", "categoryId": "devops", "proficiency": 80 },
-    { "id": "git", "name": "Version Control (Git, Git LFS, Git Flow)", "categoryId": "devops", "proficiency": 90 },
-    { "id": "hipaa-lgpd", "name": "Regulatory (HIPAA, LGPD)", "categoryId": "healthcare", "proficiency": 85 },
-    { "id": "fhir-meds", "name": "Standards (FHIR, MEDS, OpenAPI)", "categoryId": "healthcare", "proficiency": 80 },
+    { "id": "langchain", "name": "LangChain", "categoryId": "ai-ml", "groupId": "llm-integration", "proficiency": 88 },
+    { "id": "openai-api", "name": "OpenAI API", "categoryId": "ai-ml", "groupId": "llm-integration", "proficiency": 90 },
+    { "id": "rag", "name": "RAG (Retrieval-Augmented Generation)", "categoryId": "ai-ml", "groupId": "llm-integration", "proficiency": 85 },
+    { "id": "mcp", "name": "Model Context Protocol", "categoryId": "ai-ml", "groupId": "llm-integration", "proficiency": 82 },
+    { "id": "openai-whisper", "name": "OpenAI Whisper", "categoryId": "ai-ml", "groupId": "llm-integration", "proficiency": 85 },
+    { "id": "tensorflow", "name": "TensorFlow", "categoryId": "ai-ml", "groupId": "deep-learning", "proficiency": 80 },
+    { "id": "keras", "name": "Keras", "categoryId": "ai-ml", "groupId": "deep-learning", "proficiency": 82 },
+    { "id": "cnn", "name": "CNN (Convolutional Neural Networks)", "categoryId": "ai-ml", "groupId": "deep-learning", "proficiency": 78 },
+    { "id": "resnet", "name": "ResNet Architecture", "categoryId": "ai-ml", "groupId": "deep-learning", "proficiency": 75 },
+    { "id": "pinecone", "name": "Pinecone", "categoryId": "ai-ml", "groupId": "vector-databases", "proficiency": 80 },
+    { "id": "jupyter-notebook", "name": "Jupyter Notebook", "categoryId": "ai-ml", "groupId": "ml-tools", "proficiency": 88 },
+    { "id": "google-colab", "name": "Google Colab", "categoryId": "ai-ml", "groupId": "ml-tools", "proficiency": 85 },
+    { "id": "mel-spectrograms", "name": "MEL Spectrograms", "categoryId": "ai-ml", "groupId": "signal-processing", "proficiency": 78 },
+    { "id": "signal-processing", "name": "Signal Processing", "categoryId": "ai-ml", "groupId": "signal-processing", "proficiency": 75 },
+    { "id": "edge-mobile-ml", "name": "Edge/Mobile ML Deployment", "categoryId": "ai-ml", "proficiency": 80 },
+    { "id": "data-engineering", "name": "Data Engineering & Collection", "categoryId": "ai-ml", "proficiency": 82 },
+    { "id": "react", "name": "React", "categoryId": "frontend", "groupId": "js-frameworks", "proficiency": 92 },
+    { "id": "vue", "name": "Vue.js", "categoryId": "frontend", "groupId": "js-frameworks", "proficiency": 78 },
+    { "id": "typescript", "name": "TypeScript", "categoryId": "frontend", "groupId": "js-languages", "proficiency": 90 },
+    { "id": "javascript", "name": "JavaScript", "categoryId": "frontend", "groupId": "js-languages", "proficiency": 95 },
+    { "id": "unity3d", "name": "Unity3D", "categoryId": "frontend", "groupId": "game-engines", "proficiency": 85 },
+    { "id": "csharp", "name": "C#", "categoryId": "frontend", "groupId": "game-engines", "proficiency": 82 },
+    { "id": "flash", "name": "Flash", "categoryId": "frontend", "groupId": "legacy-frontend", "proficiency": 85 },
+    { "id": "actionscript", "name": "ActionScript", "categoryId": "frontend", "groupId": "legacy-frontend", "proficiency": 85 },
+    { "id": "ios", "name": "iOS Development", "categoryId": "frontend", "groupId": "mobile-platforms", "proficiency": 75 },
+    { "id": "android", "name": "Android Development", "categoryId": "frontend", "groupId": "mobile-platforms", "proficiency": 75 },
+    { "id": "cross-platform", "name": "Cross-Platform Development", "categoryId": "frontend", "groupId": "mobile-platforms", "proficiency": 80 },
+    { "id": "nodejs", "name": "Node.js", "categoryId": "backend", "groupId": "node-ecosystem", "proficiency": 90 },
+    { "id": "nestjs", "name": "NestJS", "categoryId": "backend", "groupId": "node-ecosystem", "proficiency": 88 },
+    { "id": "express", "name": "Express.js", "categoryId": "backend", "groupId": "node-ecosystem", "proficiency": 90 },
+    { "id": "dotnet-core", "name": ".NET Core", "categoryId": "backend", "groupId": "dotnet-ecosystem", "proficiency": 80 },
+    { "id": "entity-framework", "name": "Entity Framework", "categoryId": "backend", "groupId": "dotnet-ecosystem", "proficiency": 78 },
+    { "id": "postgresql", "name": "PostgreSQL", "categoryId": "backend", "groupId": "databases", "proficiency": 88 },
+    { "id": "mongodb", "name": "MongoDB", "categoryId": "backend", "groupId": "databases", "proficiency": 85 },
+    { "id": "sql-server", "name": "SQL Server", "categoryId": "backend", "groupId": "databases", "proficiency": 82 },
+    { "id": "python", "name": "Python", "categoryId": "backend", "groupId": "backend-languages", "proficiency": 85 },
+    { "id": "java", "name": "Java", "categoryId": "backend", "groupId": "backend-languages", "proficiency": 70 },
+    { "id": "openapi", "name": "OpenAPI / Swagger", "categoryId": "backend", "groupId": "api-standards", "proficiency": 88 },
+    { "id": "json", "name": "JSON", "categoryId": "backend", "groupId": "api-standards", "proficiency": 95 },
+    { "id": "rest-api", "name": "REST API Design", "categoryId": "backend", "groupId": "api-standards", "proficiency": 92 },
+    { "id": "whatsapp-business-api", "name": "WhatsApp Business API", "categoryId": "backend", "groupId": "communication-apis", "proficiency": 82 },
+    { "id": "enterprise-solutions", "name": "Enterprise Solutions", "categoryId": "backend", "proficiency": 78 },
+    { "id": "tool-development", "name": "Internal Tool Development", "categoryId": "backend", "proficiency": 80 },
+    { "id": "azure", "name": "Microsoft Azure", "categoryId": "devops", "groupId": "cloud-platforms", "proficiency": 85 },
+    { "id": "gcp", "name": "Google Cloud Platform", "categoryId": "devops", "groupId": "cloud-platforms", "proficiency": 78 },
+    { "id": "aws", "name": "Amazon Web Services", "categoryId": "devops", "groupId": "cloud-platforms", "proficiency": 75 },
+    { "id": "docker", "name": "Docker", "categoryId": "devops", "groupId": "containerization", "proficiency": 88 },
+    { "id": "docker-compose", "name": "Docker Compose", "categoryId": "devops", "groupId": "containerization", "proficiency": 85 },
+    { "id": "github-actions", "name": "GitHub Actions", "categoryId": "devops", "groupId": "ci-cd", "proficiency": 88 },
+    { "id": "mobile-deployment", "name": "Mobile Deployment Pipelines", "categoryId": "devops", "groupId": "ci-cd", "proficiency": 78 },
+    { "id": "git", "name": "Git", "categoryId": "devops", "groupId": "version-control", "proficiency": 95 },
+    { "id": "git-lfs", "name": "Git LFS", "categoryId": "devops", "groupId": "version-control", "proficiency": 82 },
+    { "id": "git-flow", "name": "Git Flow", "categoryId": "devops", "groupId": "version-control", "proficiency": 88 },
+    { "id": "powershell", "name": "PowerShell", "categoryId": "devops", "groupId": "scripting", "proficiency": 75 },
+    { "id": "bash", "name": "Bash / Shell Scripting", "categoryId": "devops", "groupId": "scripting", "proficiency": 80 },
+    { "id": "nextflow", "name": "Nextflow", "categoryId": "devops", "groupId": "bioinformatics", "proficiency": 72 },
+    { "id": "hipaa", "name": "HIPAA Compliance", "categoryId": "healthcare", "groupId": "regulatory", "proficiency": 85 },
+    { "id": "lgpd", "name": "LGPD (Brazilian GDPR)", "categoryId": "healthcare", "groupId": "regulatory", "proficiency": 88 },
+    { "id": "fhir", "name": "FHIR (Health Interoperability)", "categoryId": "healthcare", "groupId": "health-standards", "proficiency": 80 },
+    { "id": "meds", "name": "MEDS (Medical Event Data Standard)", "categoryId": "healthcare", "groupId": "health-standards", "proficiency": 75 },
     { "id": "data-security", "name": "Data Security & Privacy Architecture", "categoryId": "healthcare", "proficiency": 85 },
+    { "id": "photoshop", "name": "Adobe Photoshop", "categoryId": "product", "groupId": "design-tools", "proficiency": 88 },
+    { "id": "illustrator", "name": "Adobe Illustrator", "categoryId": "product", "groupId": "design-tools", "proficiency": 82 },
+    { "id": "figma", "name": "Figma", "categoryId": "product", "groupId": "design-tools", "proficiency": 78 },
+    { "id": "after-effects", "name": "Adobe After Effects", "categoryId": "product", "groupId": "video-tools", "proficiency": 80 },
+    { "id": "premiere", "name": "Adobe Premiere Pro", "categoryId": "product", "groupId": "video-tools", "proficiency": 78 },
+    { "id": "agile", "name": "Agile Methodology", "categoryId": "product", "groupId": "methodologies", "proficiency": 90 },
+    { "id": "mvp-development", "name": "MVP Development", "categoryId": "product", "groupId": "methodologies", "proficiency": 92 },
+    { "id": "ab-testing", "name": "A/B Testing", "categoryId": "product", "groupId": "methodologies", "proficiency": 85 },
+    { "id": "design-thinking", "name": "Design Thinking", "categoryId": "product", "groupId": "methodologies", "proficiency": 85 },
+    { "id": "scorm", "name": "SCORM", "categoryId": "product", "groupId": "e-learning", "proficiency": 80 },
+    { "id": "elearning-dev", "name": "E-Learning Development", "categoryId": "product", "groupId": "e-learning", "proficiency": 82 },
     { "id": "ux-design", "name": "UX Design & Research", "categoryId": "product", "proficiency": 85 },
     { "id": "gamification", "name": "Gamification", "categoryId": "product", "proficiency": 95 },
-    { "id": "adobe-suite", "name": "Adobe Creative Suite (Photoshop, Illustrator, After Effects, Premiere)", "categoryId": "product", "proficiency": 75 },
-    { "id": "agile", "name": "Agile, MVP Development, A/B Testing", "categoryId": "product", "proficiency": 90 },
     { "id": "strategic-leadership", "name": "Strategic Leadership", "categoryId": "leadership", "proficiency": 95 },
-    { "id": "product-management", "name": "Product Management", "categoryId": "leadership", "proficiency": 95 },
-    { "id": "edge-deployment", "name": "Edge/Mobile ML Deployment", "categoryId": "ai-ml", "proficiency": 85 },
-    { "id": "data-engineering", "name": "Data Engineering & Collection", "categoryId": "backend", "proficiency": 80 },
-    { "id": "flash-actionscript", "name": "Flash/ActionScript", "categoryId": "frontend", "proficiency": 85 },
-    { "id": "scorm-lms", "name": "SCORM/LMS Integration", "categoryId": "backend", "proficiency": 75 },
-    { "id": "elearning-dev", "name": "E-Learning Development", "categoryId": "product", "proficiency": 80 },
-    { "id": "automation-scripting", "name": "Automation & Scripting", "categoryId": "devops", "proficiency": 70 },
-    { "id": "tool-development", "name": "Internal Tool Development", "categoryId": "backend", "proficiency": 75 },
-    { "id": "enterprise-solutions", "name": "Enterprise Solutions", "categoryId": "backend", "proficiency": 75 }
+    { "id": "product-management", "name": "Product Management", "categoryId": "leadership", "proficiency": 95 }
   ],
 
   "experiences": [
@@ -205,7 +282,7 @@
           }
         }
       ],
-      "skillIds": ["nodejs", "databases", "fhir-meds", "docker", "llm-integration"],
+      "skillIds": ["mcp", "fhir", "meds", "nextflow", "python", "openapi", "rest-api", "data-engineering", "ux-design", "strategic-leadership", "docker", "git"],
       "sortOrder": 0
     },
     {
@@ -274,7 +351,7 @@
           }
         }
       ],
-      "skillIds": ["nodejs", "react-vue", "databases", "docker", "llm-integration"],
+      "skillIds": ["nestjs", "nodejs", "typescript", "react", "postgresql", "whatsapp-business-api", "openai-whisper", "openai-api", "langchain", "rag", "docker", "docker-compose", "rest-api", "strategic-leadership", "product-management", "git"],
       "sortOrder": 1
     },
     {
@@ -343,7 +420,7 @@
           }
         }
       ],
-      "skillIds": ["nodejs", "react-vue", "deep-learning", "cloud-platforms", "hipaa-lgpd"],
+      "skillIds": ["tensorflow", "keras", "cnn", "python", "typescript", "react", "nestjs", "nodejs", "postgresql", "azure", "docker", "docker-compose", "rest-api", "openapi", "json", "git", "hipaa", "lgpd", "strategic-leadership", "product-management", "figma", "ux-design"],
       "sortOrder": 2
     },
     {
@@ -404,7 +481,7 @@
           }
         }
       ],
-      "skillIds": ["ux-design", "gamification", "agile", "product-management"],
+      "skillIds": ["figma", "mvp-development", "ab-testing", "design-thinking", "gamification", "ux-design", "agile", "product-management", "strategic-leadership"],
       "sortOrder": 3
     },
     {
@@ -479,7 +556,7 @@
           }
         }
       ],
-      "skillIds": ["llm-integration", "strategic-leadership", "hipaa-lgpd", "product-management", "cloud-platforms"],
+      "skillIds": ["strategic-leadership", "product-management", "lgpd", "hipaa", "openai-api", "langchain", "rag", "gamification", "ab-testing", "mvp-development", "agile", "design-thinking", "data-security"],
       "sortOrder": 4
     },
     {
@@ -540,7 +617,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "dotnet", "cicd", "gamification", "deep-learning"],
+      "skillIds": ["unity3d", "csharp", "ios", "android", "cross-platform", "github-actions", "agile", "mel-spectrograms", "signal-processing", "gamification", "git", "git-flow", "strategic-leadership", "product-management"],
       "sortOrder": 5
     },
     {
@@ -608,7 +685,7 @@
           }
         }
       ],
-      "skillIds": ["deep-learning", "ml-tools", "edge-deployment", "data-engineering", "strategic-leadership"],
+      "skillIds": ["resnet", "cnn", "mel-spectrograms", "signal-processing", "edge-mobile-ml", "data-engineering", "tensorflow", "keras", "python", "jupyter-notebook"],
       "sortOrder": 6
     },
     {
@@ -669,7 +746,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "ux-design", "agile", "product-management", "strategic-leadership"],
+      "skillIds": ["strategic-leadership", "product-management", "signal-processing", "mvp-development", "design-thinking", "ux-design", "agile", "unity3d", "csharp"],
       "sortOrder": 7
     },
     {
@@ -730,7 +807,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "gamification", "strategic-leadership", "ux-design", "enterprise-solutions"],
+      "skillIds": ["unity3d", "csharp", "gamification", "elearning-dev", "strategic-leadership", "product-management", "mvp-development", "agile", "ux-design", "enterprise-solutions"],
       "sortOrder": 8
     },
     {
@@ -790,7 +867,7 @@
           }
         }
       ],
-      "skillIds": ["flash-actionscript", "scorm-lms", "elearning-dev", "ux-design"],
+      "skillIds": ["flash", "actionscript", "scorm", "elearning-dev", "tool-development", "ux-design"],
       "sortOrder": 9
     },
     {
@@ -850,7 +927,7 @@
           }
         }
       ],
-      "skillIds": ["flash-actionscript", "tool-development", "elearning-dev", "gamification", "strategic-leadership"],
+      "skillIds": ["flash", "actionscript", "json", "tool-development", "elearning-dev", "ux-design", "git"],
       "sortOrder": 10
     }
   ],
@@ -1042,7 +1119,7 @@
           }
         }
       ],
-      "skillIds": ["flash-actionscript", "automation-scripting", "elearning-dev"]
+      "skillIds": ["flash", "actionscript", "powershell", "tool-development", "elearning-dev"]
     }
   ]
 }
