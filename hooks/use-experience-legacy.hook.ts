@@ -10,6 +10,7 @@ export interface LegacySkill {
   name: string;
   categoryId: string;
   categoryColor: string;
+  groupId?: string;
 }
 
 /**
@@ -56,6 +57,7 @@ export function useExperienceLegacy(): {
         name: skill.name,
         categoryId: skill.categoryId,
         categoryColor: categoryColorMap.get(skill.categoryId) ?? 'slate',
+        groupId: skill.groupId,
       })),
     }));
   }, [experiences, data]);

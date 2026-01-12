@@ -8,12 +8,44 @@ import {
   Link,
 } from '@react-pdf/renderer';
 import portfolioData from '../../data/portfolio.json';
+import enTranslations from '../../public/data/translations/en.json';
+import ptTranslations from '../../public/data/translations/pt.json';
+import esTranslations from '../../public/data/translations/es.json';
 import type { Locale, PortfolioData, Skill, SkillCategory } from '../../types/portfolio-data.types';
-import { resolveLocalized, resolveLocalizedDocument, getLanguageLevelDisplay } from '../../utils/localization';
+import { getLanguageLevelDisplay } from '../../utils/localization';
 import { formatDateRange } from '../../utils/date';
 
 // Type assertion for imported JSON
 const data = portfolioData as PortfolioData;
+
+// Translation maps by locale
+const translationMaps: Record<Locale, Record<string, string>> = {
+  en: enTranslations as Record<string, string>,
+  pt: ptTranslations as Record<string, string>,
+  es: esTranslations as Record<string, string>,
+};
+
+// Helper to get translation by key
+function t(key: string, locale: Locale): string {
+  const translations = translationMaps[locale] || translationMaps.en;
+  return translations[key] ?? translationMaps.en[key] ?? key;
+}
+
+// Helper to resolve document variant keys (e.g., { cv: "key.cv", coverLetter: "key.cl" })
+function td(keys: { cv?: string; coverLetter?: string; portfolio?: string }, locale: Locale, docType: 'cv' | 'coverLetter' | 'portfolio' = 'cv'): string {
+  const key = keys[docType] ?? keys.cv ?? '';
+  return t(key, locale);
+}
+
+// Helper to resolve localized string or translation key
+function resolveText(text: { en?: string; pt?: string; es?: string } | string, locale: Locale): string {
+  if (typeof text === 'string') {
+    // It might be a translation key or direct text
+    return t(text, locale) !== text ? t(text, locale) : text;
+  }
+  // It's a localized string object
+  return text[locale] ?? text.en ?? '';
+}
 
 // PDF Styles
 const styles = StyleSheet.create({
@@ -172,7 +204,10 @@ function getCategoryDisplayName(categoryId: string, locale: Locale): string {
   }
   // Fallback to category name from data
   const category = data.skillCategories.find((c: SkillCategory) => c.id === categoryId);
-  return category ? resolveLocalized(category.name, locale) : categoryId;
+  if (category?.name) {
+    return resolveText(category.name, locale);
+  }
+  return categoryId;
 }
 
 // Group skills by category
@@ -188,9 +223,9 @@ function getSkillsByCategory(locale: Locale): Record<string, string[]> {
 }
 
 // Helper to format location
-function formatLocation(location: { city: string | null; country: string | null; isRemote: boolean; label?: { en: string; pt?: string; es?: string } }, locale: Locale): string {
+function formatLocation(location: { city: string | null; country: string | null; isRemote: boolean; label?: { en: string; pt?: string; es?: string } | string }, locale: Locale): string {
   if (location.label) {
-    return resolveLocalized(location.label, locale);
+    return resolveText(location.label, locale);
   }
   if (location.isRemote) {
     const remoteLabels: Record<Locale, string> = { en: 'Remote', pt: 'Remoto', es: 'Remoto' };
@@ -257,12 +292,12 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
     const primaryRole = exp.roles[0];
     return {
       id: exp.id,
-      role: resolveLocalized(primaryRole.title, locale),
+      role: resolveText(primaryRole.title, locale),
       company: exp.company.name,
       location: formatLocation(exp.location, locale),
       period: formatDateRange(primaryRole.startDate, primaryRole.endDate, locale),
-      description: resolveLocalizedDocument(exp.description, locale, 'cv'),
-      achievements: exp.achievements.map((a) => resolveLocalizedDocument(a.text, locale, 'cv')),
+      description: td(exp.description as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv'),
+      achievements: exp.achievements.map((a) => td(a.text as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')),
       skills: getSkillNamesFromIds(exp.skillIds),
     };
   });
@@ -270,12 +305,12 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
   // Map internships
   const mappedInternships = internships.map((intern) => ({
     id: intern.id,
-    role: resolveLocalized(intern.role, locale),
+    role: resolveText(intern.role, locale),
     company: intern.company.name,
     location: formatLocation(intern.location, locale),
     period: formatDateRange(intern.startDate, intern.endDate, locale),
-    description: resolveLocalizedDocument(intern.description, locale, 'cv'),
-    achievements: intern.achievements.map((a) => resolveLocalizedDocument(a.text, locale, 'cv')),
+    description: td(intern.description as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv'),
+    achievements: intern.achievements.map((a) => td(a.text as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')),
     skills: getSkillNamesFromIds(intern.skillIds),
   }));
 
@@ -286,7 +321,7 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.name}>{profile.displayName}</Text>
-          <Text style={styles.title}>{resolveLocalized(profile.title, locale)}</Text>
+          <Text style={styles.title}>{resolveText(profile.title, locale)}</Text>
           <View style={styles.contactRow}>
             <Text style={styles.contactItem}>{profileLocation}</Text>
             <Text style={styles.contactItem}>{profile.phone}</Text>
@@ -315,7 +350,7 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Profile</Text>
           <Text style={styles.paragraph}>
-            {resolveLocalizedDocument(profile.summary, locale, 'cv')}
+            {td(profile.summary as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')}
           </Text>
         </View>
 
@@ -394,7 +429,7 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
           {education.map((edu) => (
             <View key={edu.id}>
               <View style={styles.jobHeader}>
-                <Text style={styles.jobTitle}>{resolveLocalized(edu.degree, locale)}</Text>
+                <Text style={styles.jobTitle}>{resolveText(edu.degree, locale)}</Text>
                 <Text style={styles.jobCompany}>{edu.institution} • {edu.location.city}, {edu.location.country}</Text>
                 <Text style={styles.jobDate}>{formatDateRange(edu.startDate, edu.endDate, locale)}</Text>
               </View>
@@ -402,7 +437,7 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
                 {edu.achievements.map((achievement) => (
                   <View key={achievement.id} style={styles.bulletItem}>
                     <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.bulletText}>{resolveLocalized(achievement.text, locale)}</Text>
+                    <Text style={styles.bulletText}>{resolveText(achievement.text, locale)}</Text>
                   </View>
                 ))}
               </View>
@@ -416,7 +451,7 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
           <View style={styles.languageRow}>
             {languages.map((lang) => (
               <Text key={lang.id} style={styles.skillItem}>
-                {resolveLocalized(lang.name, locale)} ({getLanguageLevelDisplay(lang.level, locale)})
+                {resolveText(lang.name, locale)} ({getLanguageLevelDisplay(lang.level, locale)})
               </Text>
             ))}
           </View>
@@ -427,9 +462,9 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
           <Text style={styles.sectionTitle}>Awards & Honors</Text>
           {awards.map((award) => (
             <View key={award.id} style={styles.awardItem}>
-              <Text style={styles.awardTitle}>{resolveLocalized(award.title, locale)}</Text>
+              <Text style={styles.awardTitle}>{resolveText(award.title, locale)}</Text>
               <Text style={styles.awardDetails}>{award.date} | {award.organization}</Text>
-              <Text style={styles.paragraph}>{resolveLocalizedDocument(award.description, locale, 'cv')}</Text>
+              <Text style={styles.paragraph}>{td(award.description as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')}</Text>
             </View>
           ))}
         </View>

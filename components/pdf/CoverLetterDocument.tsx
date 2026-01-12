@@ -8,12 +8,41 @@ import {
   Link,
 } from '@react-pdf/renderer';
 import portfolioData from '../../data/portfolio.json';
+import enTranslations from '../../public/data/translations/en.json';
+import ptTranslations from '../../public/data/translations/pt.json';
+import esTranslations from '../../public/data/translations/es.json';
 import type { Locale, PortfolioData } from '../../types/portfolio-data.types';
-import { resolveLocalized, resolveLocalizedDocument } from '../../utils/localization';
 import { formatDateRange } from '../../utils/date';
 
 // Cast imported JSON to typed data
 const data = portfolioData as unknown as PortfolioData;
+
+// Translation maps by locale
+const translationMaps: Record<Locale, Record<string, string>> = {
+  en: enTranslations as Record<string, string>,
+  pt: ptTranslations as Record<string, string>,
+  es: esTranslations as Record<string, string>,
+};
+
+// Helper to get translation by key
+function t(key: string, locale: Locale): string {
+  const translations = translationMaps[locale] || translationMaps.en;
+  return translations[key] ?? translationMaps.en[key] ?? key;
+}
+
+// Helper to resolve document variant keys
+function td(keys: { cv?: string; coverLetter?: string; portfolio?: string }, locale: Locale, docType: 'cv' | 'coverLetter' | 'portfolio' = 'coverLetter'): string {
+  const key = keys[docType] ?? keys.cv ?? '';
+  return t(key, locale);
+}
+
+// Helper to resolve localized string or translation key
+function resolveText(text: { en?: string; pt?: string; es?: string } | string, locale: Locale): string {
+  if (typeof text === 'string') {
+    return t(text, locale) !== text ? t(text, locale) : text;
+  }
+  return text[locale] ?? text.en ?? '';
+}
 
 const styles = StyleSheet.create({
   page: {
@@ -101,7 +130,7 @@ const CoverLetterDocument: React.FC<CoverLetterDocumentProps> = ({ locale = 'en'
   const locationStr = profile.location.city && profile.location.country
     ? `${profile.location.city}, ${profile.location.country}`
     : profile.location.label
-      ? resolveLocalized(profile.location.label, locale)
+      ? resolveText(profile.location.label, locale)
       : '';
 
   // Get recent projects (first 3 from experiences, which are the most recent by sortOrder)
@@ -116,7 +145,7 @@ const CoverLetterDocument: React.FC<CoverLetterDocumentProps> = ({ locale = 'en'
         locale,
         'short'
       ),
-      description: resolveLocalizedDocument(exp.description, locale, 'coverLetter'),
+      description: td(exp.description as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'coverLetter'),
     }));
 
   return (
@@ -125,7 +154,7 @@ const CoverLetterDocument: React.FC<CoverLetterDocumentProps> = ({ locale = 'en'
         {/* Header - Dynamic from profile */}
         <View style={styles.header}>
           <Text style={styles.name}>{profile.displayName}</Text>
-          <Text style={styles.title}>{resolveLocalized(profile.title, locale)}</Text>
+          <Text style={styles.title}>{resolveText(profile.title, locale)}</Text>
           <View style={styles.contactRow}>
             <Text style={styles.contactItem}>{locationStr}</Text>
             <Text style={styles.contactItem}>{profile.phone}</Text>
@@ -136,7 +165,7 @@ const CoverLetterDocument: React.FC<CoverLetterDocumentProps> = ({ locale = 'en'
         {/* Opening - Uses profile.summary */}
         <View style={styles.section}>
           <Text style={styles.paragraph}>
-            {resolveLocalizedDocument(profile.summary, locale, 'coverLetter')}
+            {td(profile.summary as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'coverLetter')}
           </Text>
           <Text style={styles.paragraph}>
             At Fofuuu, I designed and built patient management systems for autism therapy clinics, including claims-based access control, remote activity monitoring, clinical dashboards, AI-driven adaptive therapy plans, and analytics pipelines. This work resulted in a published clinical study and a platform that serves therapists and families across Brazil (<Link src={profile.social.youtube ?? ''} style={styles.link}>1 Minute Product Showcase</Link>).
