@@ -1,0 +1,456 @@
+=== PAGE 1 ===
+Bruno Tachinardi
+T E C H N O LO G Y  &  I N N OVAT I O N  L E A D
+Details
+São Paulo
+Brazil
+(11) 99173-0713
+brunotachinardi@gmail.com
+Links
+Linkedin
+Fofuuu Product Showcase
+Fofuuu + Samsung Campaign
+Languages
+Portuguese
+English
+Spanish
+Skills
+AI Agents with Langchain, 
+Pinecone, Custom Tools & 
+Connectors (Typescript)
+ML with TensorKow & Ueras 
+(Python)
+App Frontend with Wnity3d 
+for Android, iOS, #indows and 
+MacOS (CQ)
+Backend with .NET Core, Entity 
+Framework & S/L (CQ)
+#eb Frontend with Vue R veact 
+(Typescript)
+Profile
+Tech leader with a focus on digital transformation. Spearheaded AI-dri2en solutions 
+at Fofuuu, enhancing clinical and operational outcomes. Passionate about using 
+technology for societal betterment.
+Employment History
+Founder, CEO & CTO, Fofuuu, São Paulo
+F E B vWA v Y  — 0 1 9  :  P v E S E N T
+Overview• In —019, I embraced the dual role of CEO and CTO at Fofuuu, steering 
+the company through a critical pi2ot towards B—B and autism therapies and broader 
+digital health solutions focused on professionals.
+Key Achievements•
+5 Fofuuu Edu Development• Launched Fofuuu Edu with an initial offering of o2er 
+x00 therapy acti2ities, which has since eqpanded to more than —,x00, enriching 
+our autism and special conditions therapy platform.
+5 Automated Activity Metrics System• De2eloped an inno2ati2e automated 
+system for acti2ity metrics collection in Fofuuu Edu, adding eight new metrics 
+pre2iously unobser2able without digital assistance.
+5 Content Production and Standardization• To manage the eqtensi2e eqpansion 
+to o2er —,x00 acti2ities with a lean team, we implemented ad2anced internal 
+tools and methodologies. This approach streamlined content organization, 
+standardized therapy goals and mechanics, and accelerated production while 
+ensuring high-$uality therapeutic acti2ities.
+5 Fofuuu for Clinics Development• Created a B—B solution for speech therapy 
+clinics, enhancing therapy session ef%ciency through comprehensi2e data 
+management, AI-dri2en therapy plan customization, and progress tracking.
+5 Strategic Leadership• Guided Fofuuu through fundraising (securing vJ 1.x 
+M from Bossa No2a, Samsung, and Finep), team eqpansion, and product 
+di2ersi%cation. Fostered a culture of inno2ation and resilience, especially during 
+challenging %nancial periods.
+5 Clinical Study Leadership• Led a pi2otal clinical study with Wnimed, 
+collaborating with lead therapists to structure the study and de2elop new 
+ef%ciency metrics. The study re2ealed an a2erage skill ac$uisition speed increase 
+of 17j, with peaks at 31j.
+5 AI and Compliance Initiatives• Implemented LGPD and HIPAA compliance 
+in our Fofuuu for Clinics product. Introduced AI-dri2en tools for real-time 
+adaptation in therapy acti2ities, and began eqploring LLM integrations for 
+enhanced insights, customer support, and acti2ity de2elopment.
+5 Innovative Tech Integration• Embraced cutting-edge technology, including 
+the integration of natural language pipelines using OpenAI and open-source 
+models with LangChain. This initiati2e aims to re2olutionize performance report 
+insights, customer support, and custom acti2ity de2elopment.
+Product Innovation and GamiNcation Consultant, bukanR, São Paulo
+F E B vWA v Y  — 0 — —  :  ' W N E  — 0 — —
+jesponsikilities and Achievements•
+
+
+=== PAGE 2 ===
+Backend with Node, Eqpress, 
+Mongoose and MongoDB 
+(Typescript)
+Eqperiments with PoC, MVP, ARB 
+Testing, Concierge
+Inno2ation Strategic Planning & 
+Leadership
+Teamwork, Problem Sol2ing & 
+#ork Wnder Pressure
+Data Security & Analysis
+HIPPA & LGPD Compliance
+Wnit & Integration Tests
+Docker & Docker Compose
+API Design & OpenAPI
+'upyter Notebook
+Google Colab
+Microsoft Azure
+Google Cloud
+A#S
+Google Play Build & Deploy
+App Store Build & Deploy
+Git, Git LFS & Git Flow
+Github Actions
+Microsoft Of%ce (Eqcel, #ord, 
+Power Point)
+Google Dri2e (Sheets, Docs, 
+Presentations)
+Google Dri2e API
+Google Chrome Eqtensions
+VS Code Eqtensions
+5 ProVect Analysis and Strategy jeNnement• Conducted a comprehensi2e 
+analysis of the ongoing pro8ect, identifying key areas for impro2ement. Wtilized 
+my eqpertise in user eqperience and product de2elopment to re%ne and align the 
+MVP with Nubank"s strategic goals.
+5 Collakorative Development and Alignment• #orked closely with product 
+designers and coordinated with 2arious stakeholders to gain necessary 
+appro2als. Managed the integration of the MVP into Nubank"s eqisting product 
+ecosystem, ensuring a seamless user eqperience.
+5 Prototyping and -alidation• Led the creation and testing of functional 
+prototypes, incorporating real user feedback. This added a crucial 2alidation 
+step before the MVP"s of%cial launch.
+5 Communication Strategy and Integration• Assisted in designing effecti2e 
+communication strategies and integrating them within the eqisting app 
+framework to ensure a cohesi2e user eqperience.
+5 Technical Planning and Story Development• Wtilized my technical background 
+to formulate clear and comprehensi2e de2elopment tasks and user stories, 
+facilitating a smooth translation of business re$uirements into technical 
+solutions.
+Impact• My consulting role at Nubank was instrumental in na2igating the Client 
+Loyalty MVP towards a successful launch. By harmonizing user eqperience insights 
+with strategic product de2elopment, I played a key role in deli2ering a product that 
+not only met business ob8ecti2es but also enriched the o2erall user eqperience.
+Lead AI jesearcher and Developer, Fofuuu, São Paulo
+O C TO B E v  — 0 1 7  :  N OV E M B E v  — 0 1 X
+Overview• Lead the research and de2eloped the PhoneNet model, an ambitious 
+endea2or to de2elop a deep learning model for real-time phoneme classi%cation, 
+aimed at enhancing our speech therapy tools.
+Key Contrikutions and Achievements•
+5 jesearch and Development• Initiated and led the research to de2elop a 
+real-time 2oice-to-phoneme classi%cation system. Adapted a vesNet model to 
+work with Mel-log spectrograms features, %ne-tuning hyper-parameters and 
+layers to create an ef%cient, lightweight model.
+5 Model Optimization• Focused on optimizing the model for isolated phoneme 
+classi%cation, crucial for speech therapy techni$ues used in conditions like 
+autism and Cleft Lip and Palate. This included uni$ue sounds and syllables often 
+used in therapeutic settings.
+5 International Collakoration• Partnered with a machine learning team from 
+Singapore, le2eraging their eqpertise in Speech-to-Teqt systems. Despite 
+resource constraints, we successfully collaborated on a pro-bono basis, 
+enriching our model with eqpert insights.
+5 ProofBofBConcept and Data Collection• Successfully de2eloped a 
+Proof-of-Concept, followed by launching the 6Donate your Voice6 campaign. 
+Created an online platform for collecting, cleaning, and labeling phoneme 
+speech samples, amassing 70k samples for initial training and %ne-tuning of the 
+model.
+
+
+=== PAGE 3 ===
+Adobe (Photoshop, Illustrator, 
+After Effects, Premiere)
+Linuq (Wbuntu, Debian)
+Powershell
+/uality Assurance
+W4 Design
+W4 vesearch
+Gami%cation
+5 Puklication• Authored and published a paper titled 6PhoneNet• A Neural 
+Network with Deep Learning for veal-Time Phoneme vecognition in Digital 
+Games6 at the —’th Brazilian Congress of Speech Therapy. This publication 
+detailed the de2elopment and ef%cacy of PhoneNet, highlighting its 91.xçj 
+accuracy in phoneme recognition and its inno2ati2e application in speech 
+therapy.
+5 Ongoing Data Collection• Continued to eqpand our dataset within the product, 
+reaching a total collection of 1— million samples, setting the stage for the 
+de2elopment of an ad2anced 2ersion — of the model.
+CoBFounder and CTO, Fofuuu, São Paulo
+'A N WA v Y  — 0 1 7  :  'A N WA v Y  — 0 1 9
+Overview• Stepping into the CTO role with secured funding, my focus shifted towards 
+building and leading a robust product team, while also continuing to contribute 
+signi%cantly to the technical de2elopment of our platform.
+Key jesponsikilities and Achievements•
+5 Team 'uilding and Partnership• Spearheaded the hiring process for product 
+de2elopment roles, including de2elopers, designers, artists, and animators. 
+Formed a strategic partnership with a game de2elopment studio, which pro2ided 
+additional de2elopment support and helped reduce initial costs.
+5 Culture and Process Management• Culti2ated a strong team culture and 
+implemented agile methodologies along with basic CIRCD and De2Ops pipelines, 
+enhancing ef%ciency and collaboration within the team.
+5 Product joadmap Coordination• O2ersaw the product roadmap, balancing 
+customer feedback with business ob8ecti2es. This led to the production of 
+o2er 1x0 therapy games, multi-platform support, user and patient management 
+system, subscription-based monetization, basic BI dashboards, and therapy 
+management tools.
+5 Technical Leadership and Development• As Lead De2eloper, I was responsible 
+for code re2iews and app architecture. Continued to re%ne our signal processing 
+input system, adapting it for a broader audience by incorporating ad2anced MEL 
+spectrogram analysis with neural network-trained %lters so it could be used with 
+phoneme ac$uisition and generalization acti2ities.
+5 StaReholders and Presentations• Assisted the CEO in sales pitching and 
+in2estor meetings, ensuring comprehensi2e co2erage of all aspects of our 
+technology and product.
+CoBFounder, CEO and Sole Developer, Fofuuu, São Paulo
+M AY  — 0 1 x  :  D E C E M B E v  — 0 1 ’
+Overview• In the foundational stage of Fofuuu, I identi%ed the potential to adapt a 
+product created at Betri Studio into a tool for speech therapy, focusing initially on Cleft 
+Lip and Palate rehabilitation.
+Key jesponsikilities and Achievements•
+5 Product jepurposing and Innovation• Le2eraged an eqisting product from Betri, 
+transforming it into a therapeutic tool. This adaptation was inspired by a speech 
+therapist associate, guiding our focus on Cleft Lip and Palate.
+
+
+=== PAGE 4 ===
+5 Prototype Development• De2eloped a prototype that utilized sound signal 
+analysis to con2ert airKow into real-time game inputs, enabling patients to 
+engage in airKow training acti2ities through interacti2e gameplay.
+5 jesearch and M-P Creation• Conducted eqtensi2e research among speech 
+therapy professionals to understand their daily challenges and needs. This 
+research led to the creation of the %rst MVP, which included functionalities 
+addressing these pain points.
+5 Clinical Testing and -alidation• Initiated clinical testing of the MVP with early 
+adopters, gathering 2aluable feedback and data to re%ne the product further.
+5 Investor Pitching and Funding• Successfully pitched the business concept to 
+in2estors, securing our %rst round of funding. This milestone allowed us to 
+eqpand the team and onboard a third founder who took o2er the CEO role, 
+enabling me to concentrate on technology de2elopment and inno2ation.
+Founder, 'usiness and Technology Lead, 'etri Studio, São Paulo
+F E B vWA v Y  — 0 1 3  :  F E B vWA v Y  — 0 1 ’
+Overview• In my role as Founder, CEO, and CTO of Betri Studio, I guided the company 
+in establishing itself as a niche inno2ator in digital solutions, focusing on technology, 
+user eqperience, and gami%cation for corporate clients. My responsibilities spanned 
+strategic planning, business de2elopment, product design, and technology leadership.
+Innovative ProVect Development•
+1. Led the creation of custom digital solutions aimed at enhancing employee 
+engagement and internal communication, integrating gami%cation strategies.
+—. Managed multidisciplinary teams and their alignment with multiple 
+stakeholders, ensuring cohesi2e collaboration across W4 design, software 
+de2elopment, and pro8ect eqecution.
+MaVor ProVects•
+1. McDonaldWs Institute• De2eloped an engaging digital eqperience with 
+gami%cation elements to educate employees about the organization"s history, 
+2alues, mission and 2ision, boosting internal engagement and knowledge 
+sharing.
+—. Zella• Implemented a comprehensi2e Hv management system with gami%ed 
+features, enhancing adoption and engagement within the commercial team.
+3. MAC Construction• De2ised a rewards and eqperiences system linked to 
+the sales teamís performance, incorporating elements like social interaction, 
+a2atars, and prize systems to encourage healthy competition and collaboration.
+ç. Jamkon Pharmaceuticals• Created a uni$ue, interacti2e system for the 
+Fluimucil educational campaign, combining entertainment with product 
+knowledge, thereby increasing brand engagement.
+Course Engine Developer, MCS xava, São Paulo
+M AY  — 0 1 —  :  M A vC H  — 0 1 3
+jole and Involvement•
+5 Development jole• Contributed as a 8unior de2eloper to the creation of an 
+Editor and vuntime for MCS 'a2aís online courses. This pro8ect was aimed 
+at transitioning to a B—C market, re$uiring a focus on robust and optimized 
+solutions.
+
+
+=== PAGE 5 ===
+5 Technical EUecution• In2ol2ed in de2eloping a Flash-based course creation 
+engine, with an emphasis on performance and user accessibility.
+5 LMS and SCOjM Integration• #orked on integrating the runtime with Learning 
+Management Systems (LMS) in compliance with SCOvM standards, including 
+functionalities like progress bookmarking and learner path management.
+5 Autonomous DecisionBMaRing• Despite being in a 8unior role, I was entrusted 
+with a degree of autonomy in certain aspects of the engine"s de2elopment, 
+allowing me to contribute to its o2erall architecture and direction.
+Learning EUperience• This early career role at MCS 'a2a was a signi%cant learning 
+opportunity, where I honed my technical skills and gained 2aluable insights into 
+e-learning platform de2elopment. It laid the foundation for my understanding of 
+scalable and user-friendly e-learning solutions.
+Game and Course Developer, EBGuru, São Paulo
+'A N WA v Y  — 0 1 —  :  F E B vWA v Y  — 0 1 3
+Overview• In my role as a 'unior Game and Course De2eloper at E-Guru, a São 
+Paulo-based company specializing in interacti2e Flash applications for e-learning, I 
+was part of a dynamic team that created educational content for corporate clients" Hv 
+departments.
+jole and Contrikutions•
+5 Development and Innovation• #orked on de2eloping Flash applications for 
+e-learning and courses, primarily targeting Hv departments, employee training, 
+and continuous education.
+5 Technology Hpgrade Initiative• Ad2ocated for and led the transition from 
+ActionScript — to ActionScript 3. This shift aimed to o2ercome limitations such 
+as code embedded in Flash ob8ects, which hindered 2ersioning and code reuse.
+5 InB(ouse Engine• Assigned the critical task of de2eloping an in-house 
+pseudo-engine and internal tools. This facilitated designers in custom course 
+creation, signi%cantly impro2ing ef%ciency and adaptability in response to 
+market demands.
+5 Engine Editor Development• Created an intuiti2e course editor that sa2ed 
+pro8ects in a 'SON format, integrating assets and business logic. This system 
+streamlined pro8ect distribution and consumption by the engine"s runtime, 
+allowing for easy addition of new features and shareable code across pro8ects.
+5 Leadership in Technical Innovation• Assigned to work on the engine"s 
+de2elopment full-time, my efforts culminated in a more ef%cient, 
+2ersion-controlled, and competiti2e product offering.
+Learning and Growth• This eqperience was instrumental in transitioning from 
+academic to professional software de2elopment. I learned the compleqities of bringing 
+products to production, balancing technological upgrades with practical concerns like 
+backward compatibility and client en2ironment constraints.
+Education
+'achelor of Game Design, Anhemki Morumki, São Paulo
+'A N WA v Y  — 0 0 X  :  D E C E M B E v  — 0 1 1
+Key Achievements•
+
+
+=== PAGE 6 ===
+5 De2eloped a top-scoring %nal pro8ect that was not only conceptually strong but 
+also technically robust, resulting in a ready-to-launch gami%ed product.
+5 Authored and published 6De%niêão e Estrutura do Ambiente Competiti2o de um 
+'ogo• um Estudo6, a paper reKecting my research and technical eqpertise in game 
+design.
+Technical Focus•
+5 Dedicated signi%cant attention to mastering technical skills, including ad2anced 
+programming, rendering algorithms, and network de2elopment within the 
+conteqt of game design.
+5 Eqplored theoretical concepts about game theory, gami%cation and game 
+dynamics, their connection to Beha2ioral Design, which ignited my passion 
+about using these tools to impro2e people"s li2es through healthy habit creation 
+and adhesion.
+Awards & Honors
+'est Educational Game Award /'IG Festival ) 'bDES:, 'razil
+' W LY  — 0 1 x
+Awarded ky• BIG Festi2al (Best International Games Festi2al) and BNDES (Brazilian 
+De2elopment Bank)
+Details• This award recognized our inno2ati2e digital health game, designed to 
+aid therapy for children with Cleft Lip and Palate. The prize marked our %rst 
+signi%cant funding. This support enabled us to enhance Fofuuu for 2arious conditions, 
+demonstrating our commitment to impactful healthcare solutions.
+Investment• vJ —0,000
+Learn moreí 
+https•RRgizmodo.uol.com.brRcom-premio-no-big-festi2al-fofuu-mostra-$ue-games-podem-ser-mui
+'est Startup Award & (onorakle Mention for Most Dedicated Startup 
+/'ioStartup Lak:, 'elo (orizonte
+A P v I L  — 0 1 ’
+Awarded ky• BioStartup Lab, eqecuted by Biominas Brasil and Sebrae Minas
+Details• Awarded as the best startup in BioStartup Lab"s %rst round, this recognition 
+highlighted our inno2ati2e digital health solutions. Accompanied by an honorable 
+mention for dedication, peer-2oted for commitment and inno2ation, it reKects our 
+respected standing among fellow entrepreneurs. This 8ourney through BioStartup Lab 
+showcased our resilience and adaptability, reinforcing our ability to create impactful 
+health tech solutions.
+Investment• vJ —00,000 worth of ser2ices from Biominas and Sebrae.
+Learn moreí 
+https•RRwww.linkedin.comRpulseRhistjC3jB3ria-por-trjC3jA1s-do-biostartup-lab-rafael-sil2aR
+(ealth Entrepreneurship Award /SêrioBLikan1s (ospital ) bTT Data:, 'razil
+N OV E M B E v  — 0 1 ’
+Awarded ky• S_rio-Liban s Institute of Teaching and vesearch and E2eris Brazil, 
+through its Foundation.
+
+
+=== PAGE 7 ===
+Details• vecognized for ad2ancing our pro8ect into a full-Kedged platform for 
+speech therapy, incorporating ad2anced 2oice recognition technology and a hardware 
+prototype for airKow input. This award marks a pi2otal de2elopment in our 8ourney, as 
+we mo2ed beyond conceptual designs to tangible, inno2ati2e solutions in healthcare 
+technology.
+Prize• vJ x0,000
+Learn moreí 
+https•RRwww.pptasaude.com.brRnoticiasR3x01Rstartup-fofuuu-e-2encedora-do-premio-empreend
+Outstanding (ealth and Zellness Startup /Sakin Institute ) Artemisia Lak:, 
+'razil
+S E P T E M B E v  — 0 1 7
+Awarded ky• Artemisia and Sabin Institute
+Details• vecognized as an Outstanding Startup in the Artemisia Lab Health and 
+#ellness acceleration program. This program, a collaboration between Artemisia and 
+Instituto Sabin, sought to support social impact businesses focused on health and 
+well-being. Fofuuu was selected for its potential to positi2ely impact thousands of li2es 
+in Brazil, particularly through solutions that could enhance and complement the public 
+offerings of the Wni%ed Health System (SWS). Among 171 mapped companies, Fofuuu 
+stood out for its inno2ati2e approach and commitment to social impact in health.
+Learn moreí 
+https•RRpes$uisaparaino2acao.fapesp.brRinstituto€sabin€e€artemisia€selecionam€17€startups€de€i
+Award for 'est ChildrenWs Game /'IG Festival:, Glokal
+' W N E  — 0 1 X
+Awarded ky• BIG Festi2al
+Details• Fofuuu was honored with the Best Children"s Game Award at the —01X 
+BIG Festi2al. The uni$ue 8ury, composed of children from GvAAC (Support Group 
+for Adolescents and Children with Cancer), selected Fofuuu as the most en8oyable 
+game from a di2erse international lineup. This award is particularly notable because 
+Fofuuu was up against games primarily designed for entertainment, without a focus 
+on education or healthcare. Our win in this category demonstrates our ability to 
+seamlessly integrate fun gaming eqperiences with therapeutic bene%ts.
+Learn More• 
+https•RRwww.terra.com.brRnoticiasRtecnologiaRcanaltechRno-heroes-here-e-frostpunk-le2am-princ
+Creative Startups Acceleration & (ighlight Campaign /Samsung:, 'razil
+M A vC H  — 0 1 9
+Awarded ky• Samsung
+Details• Selected for Samsung"s esteemed startup program, this period signi%ed 
+Fofuuu"s strategic pi2ot from a speech therapy-eqclusi2e platform to a comprehensi2e 
+platform encompassing speech therapy, occupational therapy, psycho-pedagogy, and 
+beha2ioral psychology. This eqpansion, particularly focused on supporting children 
+with autism, integrates AI for adapti2e learning, marking a substantial ad2ancement 
+in our digital health solutions.
+Investment• vJ —00,000
+
+
+=== PAGE 8 ===
+Learn more• 
+https•RRnews.samsung.comRbrRsamsung-acelera-startup-$ue-estimula-a-fala-das-criancas-com-8og
+Campaign jecognition• Fofuuu was featured in Samsung"s marketing campaign, 
+showcasing our inno2ati2e approach to inclusi2e technology for children with special 
+needs.
+Learn more•Xhttps•RRyoutu.beRLYWtFdqu/ds
+Social Impact Games Award /Itamaraty ) Games for Change:, South America
+D E C E M B E v  — 0 1 9
+Awarded ky• Games for Change and Itamaraty (Brazilian Ministry of Foreign Affairs)
+Details• This accolade was presented at the 7th Festi2al Games for Change Latin 
+America, recognizing our pro8ectís contribution to social change through gaming. The 
+award acknowledged our game"s role in inclusion and citizenship, and as a result, 
+Fofuuu was selected to represent Brazil at international e2ents in London, Berlin, 
+Paris, and New York.
+CovidB9X japid Innovation Cycle ProVect Award /City of São Paulo:, São 
+Paulo
+A P v I L  — 0 — 0
+Awarded ky• City of São Paulo"s Ade Sampa, along with other partners
+Details• Fofuuu was recognized for its swift adaptation of our health platform to 
+support telemedicine during the COVID-19 pandemic. This award highlights our 
+inno2ati2e response to urgent public health needs.
+Investment• vJ 100,000
+Learn more• 
+https•RRre2istapegn.globo.comRStartupsRnoticiaR—0—0R0çRprefeitura-de-sp-anuncia-startups-$ue-
+Santander @ Tomorrow Challenge Award, Glokal
+' W LY  — 0 — 1
+Awarded ky• Santander
+Details• Fofuuu was honored in the Santander 4 Tomorrow Challenge, a global 
+competition seeking inno2ati2e solutions to challenges posed by COVID-19. Selected 
+from o2er —,—00 proposals across 3x countries, Fofuuu was recognized in the 
+6ve-In2ent6 category for our gami%ed and remote therapy acti2ities for children with 
+disabilities.
+Investment• Y —0,000.
+Learn more• 
+https•RRwww.santanderq.comRenRblogRfofuuu-tricia-arau8o-bruno-tachinardi
+Internships
+Course Developer, EBGuru, São Paulo
+O C TO B E v  — 0 1 0  :  M AY  — 0 1 1
+jole and Contrikutions•
+5 Primary TasR• Initially tasked with translating e-learning courses from 
+Portuguese to Spanish, in2ol2ing repetiti2e and time-consuming work.
+
+
+=== PAGE 9 ===
+5 Automation Initiative• vecognizing the potential for process optimization, I 
+dedicated personal time to de2elop a script to automate translation tasks. 
+Wtilized PowerShell scripts for %le and folder management and created a Flash 
+plugin for teqt replacement within Flash %les.
+5 Process Improvement• Successfully streamlined the translation process, 
+signi%cantly reducing the time re$uired for course localization. This system was 
+later adopted by other team members, enhancing o2erall team ef%ciency.
+5 Course Development• Post-translation pro8ect, I was entrusted with 
+straightforward de2elopment tasks within the company"s main course 
+de2elopment pipeline, marking my initial foray into practical software 
+de2elopment.
+Learning and Growth• This internship was a critical learning period where I not only 
+honed my technical skills but also de2eloped a keen eye for process impro2ement and 
+automation. It laid the groundwork for my understanding of ef%ciency in software 
+de2elopment workKows.
+
+

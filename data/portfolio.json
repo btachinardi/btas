@@ -1,0 +1,1040 @@
+{
+  "$schema": "./portfolio.schema.json",
+  "version": "1.0.0",
+  "defaultLocale": "en",
+  "supportedLocales": ["en", "pt", "es"],
+
+  "profile": {
+    "id": "bruno-tachinardi",
+    "name": {
+      "first": "Bruno",
+      "last": "Tachinardi"
+    },
+    "displayName": "Bruno Tachinardi",
+    "title": "profile.title",
+    "email": "brunotachinardi@gmail.com",
+    "phone": "+55 (11) 99173-0713",
+    "location": {
+      "city": "Sao Paulo",
+      "country": "Brazil",
+      "isRemote": false
+    },
+    "photo": "/profile.png",
+    "social": {
+      "linkedin": "https://www.linkedin.com/in/btachinardi/",
+      "github": "https://github.com/btachinardi/",
+      "youtube": "https://youtu.be/LYUtFdxuQds"
+    },
+    "summary": {
+      "cv": "profile.summary.cv",
+      "coverLetter": "profile.summary.coverLetter",
+      "portfolio": "profile.summary.portfolio"
+    },
+    "focusAreas": [
+      "profile.focusAreas.0",
+      "profile.focusAreas.1",
+      "profile.focusAreas.2",
+      "profile.focusAreas.3",
+      "profile.focusAreas.4"
+    ]
+  },
+
+  "languages": [
+    {
+      "id": "portuguese",
+      "name": "language.portuguese.name",
+      "level": "native",
+      "flagCode": "BR"
+    },
+    {
+      "id": "english",
+      "name": "language.english.name",
+      "level": "fluent",
+      "flagCode": "US"
+    },
+    {
+      "id": "spanish",
+      "name": "language.spanish.name",
+      "level": "intermediate",
+      "flagCode": "ES"
+    }
+  ],
+
+  "skillCategories": [
+    {
+      "id": "ai-ml",
+      "name": "skillCategory.ai-ml.name",
+      "icon": "Brain",
+      "color": "purple"
+    },
+    {
+      "id": "frontend",
+      "name": "skillCategory.frontend.name",
+      "icon": "Layout",
+      "color": "pink"
+    },
+    {
+      "id": "backend",
+      "name": "skillCategory.backend.name",
+      "icon": "Server",
+      "color": "blue"
+    },
+    {
+      "id": "devops",
+      "name": "skillCategory.devops.name",
+      "icon": "Cloud",
+      "color": "cyan"
+    },
+    {
+      "id": "healthcare",
+      "name": "skillCategory.healthcare.name",
+      "icon": "Heart",
+      "color": "red"
+    },
+    {
+      "id": "product",
+      "name": "skillCategory.product.name",
+      "icon": "Lightbulb",
+      "color": "yellow"
+    },
+    {
+      "id": "leadership",
+      "name": "skillCategory.leadership.name",
+      "icon": "Users",
+      "color": "green"
+    }
+  ],
+
+  "skills": [
+    { "id": "llm-integration", "name": "LLM Integration (LangChain, OpenAI API, RAG, MCP)", "categoryId": "ai-ml", "proficiency": 95 },
+    { "id": "deep-learning", "name": "Deep Learning (TensorFlow, Keras, CNN)", "categoryId": "ai-ml", "proficiency": 90 },
+    { "id": "vector-databases", "name": "Vector Databases (Pinecone)", "categoryId": "ai-ml", "proficiency": 85 },
+    { "id": "ml-tools", "name": "Tools (Jupyter Notebook, Google Colab)", "categoryId": "ai-ml", "proficiency": 85 },
+    { "id": "react-vue", "name": "React / Vue (TypeScript)", "categoryId": "frontend", "proficiency": 90 },
+    { "id": "unity3d", "name": "Unity3D (C#) Cross-Platform Apps", "categoryId": "frontend", "proficiency": 90 },
+    { "id": "nodejs", "name": "Node.js (NestJS, Express)", "categoryId": "backend", "proficiency": 90 },
+    { "id": "dotnet", "name": ".NET Core / Entity Framework", "categoryId": "backend", "proficiency": 85 },
+    { "id": "databases", "name": "PostgreSQL / MongoDB / SQL Server", "categoryId": "backend", "proficiency": 85 },
+    { "id": "cloud-platforms", "name": "Cloud Platforms (Azure, GCP, AWS)", "categoryId": "devops", "proficiency": 85 },
+    { "id": "docker", "name": "Containerization (Docker, Docker Compose)", "categoryId": "devops", "proficiency": 85 },
+    { "id": "cicd", "name": "CI/CD (GitHub Actions, Mobile Deployment)", "categoryId": "devops", "proficiency": 80 },
+    { "id": "git", "name": "Version Control (Git, Git LFS, Git Flow)", "categoryId": "devops", "proficiency": 90 },
+    { "id": "hipaa-lgpd", "name": "Regulatory (HIPAA, LGPD)", "categoryId": "healthcare", "proficiency": 85 },
+    { "id": "fhir-meds", "name": "Standards (FHIR, MEDS, OpenAPI)", "categoryId": "healthcare", "proficiency": 80 },
+    { "id": "data-security", "name": "Data Security & Privacy Architecture", "categoryId": "healthcare", "proficiency": 85 },
+    { "id": "ux-design", "name": "UX Design & Research", "categoryId": "product", "proficiency": 85 },
+    { "id": "gamification", "name": "Gamification", "categoryId": "product", "proficiency": 95 },
+    { "id": "adobe-suite", "name": "Adobe Creative Suite (Photoshop, Illustrator, After Effects, Premiere)", "categoryId": "product", "proficiency": 75 },
+    { "id": "agile", "name": "Agile, MVP Development, A/B Testing", "categoryId": "product", "proficiency": 90 },
+    { "id": "strategic-leadership", "name": "Strategic Leadership", "categoryId": "leadership", "proficiency": 95 },
+    { "id": "product-management", "name": "Product Management", "categoryId": "leadership", "proficiency": 95 }
+  ],
+
+  "experiences": [
+    {
+      "id": "biomedhub-2025",
+      "company": {
+        "name": "BiomedHub",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Healthcare / Research"
+      },
+      "roles": [
+        {
+          "id": "biomedhub-lead-dev",
+          "title": "experience.biomedhub-2025.roles.biomedhub-lead-dev.title",
+          "employmentType": "contract",
+          "startDate": "2025-01",
+          "endDate": null,
+          "isCurrent": true
+        }
+      ],
+      "location": {
+        "city": null,
+        "country": null,
+        "isRemote": true,
+        "label": "experience.biomedhub-2025.location.label"
+      },
+      "description": {
+        "cv": "experience.biomedhub-2025.description.cv",
+        "coverLetter": "experience.biomedhub-2025.description.coverLetter",
+        "portfolio": "experience.biomedhub-2025.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "biomedhub-1",
+          "text": {
+            "cv": "experience.biomedhub-2025.achievements.biomedhub-1.cv",
+            "portfolio": "experience.biomedhub-2025.achievements.biomedhub-1.portfolio"
+          }
+        },
+        {
+          "id": "biomedhub-2",
+          "text": {
+            "cv": "experience.biomedhub-2025.achievements.biomedhub-2.cv",
+            "portfolio": "experience.biomedhub-2025.achievements.biomedhub-2.portfolio"
+          }
+        },
+        {
+          "id": "biomedhub-3",
+          "text": {
+            "cv": "experience.biomedhub-2025.achievements.biomedhub-3.cv",
+            "portfolio": "experience.biomedhub-2025.achievements.biomedhub-3.portfolio"
+          }
+        },
+        {
+          "id": "biomedhub-4",
+          "text": {
+            "cv": "experience.biomedhub-2025.achievements.biomedhub-4.cv",
+            "portfolio": "experience.biomedhub-2025.achievements.biomedhub-4.portfolio"
+          }
+        },
+        {
+          "id": "biomedhub-5",
+          "text": {
+            "cv": "experience.biomedhub-2025.achievements.biomedhub-5.cv",
+            "portfolio": "experience.biomedhub-2025.achievements.biomedhub-5.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["nodejs", "databases", "fhir-meds", "docker", "git"],
+      "sortOrder": 0
+    },
+    {
+      "id": "herdu-2025",
+      "company": {
+        "name": "HerdU",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "AgTech"
+      },
+      "roles": [
+        {
+          "id": "herdu-tech-lead",
+          "title": "experience.herdu-2025.roles.herdu-tech-lead.title",
+          "employmentType": "contract",
+          "startDate": "2025-08",
+          "endDate": "2026-01",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": null,
+        "country": null,
+        "isRemote": true,
+        "label": "experience.herdu-2025.location.label"
+      },
+      "description": {
+        "cv": "experience.herdu-2025.description.cv",
+        "coverLetter": "experience.herdu-2025.description.coverLetter",
+        "portfolio": "experience.herdu-2025.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "herdu-1",
+          "text": {
+            "cv": "experience.herdu-2025.achievements.herdu-1.cv",
+            "portfolio": "experience.herdu-2025.achievements.herdu-1.portfolio"
+          }
+        },
+        {
+          "id": "herdu-2",
+          "text": {
+            "cv": "experience.herdu-2025.achievements.herdu-2.cv",
+            "portfolio": "experience.herdu-2025.achievements.herdu-2.portfolio"
+          }
+        },
+        {
+          "id": "herdu-3",
+          "text": {
+            "cv": "experience.herdu-2025.achievements.herdu-3.cv",
+            "portfolio": "experience.herdu-2025.achievements.herdu-3.portfolio"
+          }
+        },
+        {
+          "id": "herdu-4",
+          "text": {
+            "cv": "experience.herdu-2025.achievements.herdu-4.cv",
+            "portfolio": "experience.herdu-2025.achievements.herdu-4.portfolio"
+          }
+        },
+        {
+          "id": "herdu-5",
+          "text": {
+            "cv": "experience.herdu-2025.achievements.herdu-5.cv",
+            "portfolio": "experience.herdu-2025.achievements.herdu-5.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["nodejs", "react-vue", "databases", "docker", "llm-integration"],
+      "sortOrder": 1
+    },
+    {
+      "id": "embryolabs-2024",
+      "company": {
+        "name": "EmbryoLabs",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Healthcare / AI"
+      },
+      "roles": [
+        {
+          "id": "embryolabs-tech-lead",
+          "title": "experience.embryolabs-2024.roles.embryolabs-tech-lead.title",
+          "employmentType": "contract",
+          "startDate": "2024-05",
+          "endDate": "2025-04",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": null,
+        "country": null,
+        "isRemote": true,
+        "label": "experience.embryolabs-2024.location.label"
+      },
+      "description": {
+        "cv": "experience.embryolabs-2024.description.cv",
+        "coverLetter": "experience.embryolabs-2024.description.coverLetter",
+        "portfolio": "experience.embryolabs-2024.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "embryolabs-1",
+          "text": {
+            "cv": "experience.embryolabs-2024.achievements.embryolabs-1.cv",
+            "portfolio": "experience.embryolabs-2024.achievements.embryolabs-1.portfolio"
+          }
+        },
+        {
+          "id": "embryolabs-2",
+          "text": {
+            "cv": "experience.embryolabs-2024.achievements.embryolabs-2.cv",
+            "portfolio": "experience.embryolabs-2024.achievements.embryolabs-2.portfolio"
+          }
+        },
+        {
+          "id": "embryolabs-3",
+          "text": {
+            "cv": "experience.embryolabs-2024.achievements.embryolabs-3.cv",
+            "portfolio": "experience.embryolabs-2024.achievements.embryolabs-3.portfolio"
+          }
+        },
+        {
+          "id": "embryolabs-4",
+          "text": {
+            "cv": "experience.embryolabs-2024.achievements.embryolabs-4.cv",
+            "portfolio": "experience.embryolabs-2024.achievements.embryolabs-4.portfolio"
+          }
+        },
+        {
+          "id": "embryolabs-5",
+          "text": {
+            "cv": "experience.embryolabs-2024.achievements.embryolabs-5.cv",
+            "portfolio": "experience.embryolabs-2024.achievements.embryolabs-5.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["nodejs", "react-vue", "deep-learning", "cloud-platforms", "docker"],
+      "sortOrder": 2
+    },
+    {
+      "id": "nubank-2022",
+      "company": {
+        "name": "Nubank",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Fintech"
+      },
+      "roles": [
+        {
+          "id": "nubank-consultant",
+          "title": "experience.nubank-2022.roles.nubank-consultant.title",
+          "employmentType": "contract",
+          "startDate": "2022-02",
+          "endDate": "2022-06",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.nubank-2022.description.cv",
+        "coverLetter": "experience.nubank-2022.description.coverLetter",
+        "portfolio": "experience.nubank-2022.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "nubank-1",
+          "text": {
+            "cv": "experience.nubank-2022.achievements.nubank-1.cv",
+            "portfolio": "experience.nubank-2022.achievements.nubank-1.portfolio"
+          }
+        },
+        {
+          "id": "nubank-2",
+          "text": {
+            "cv": "experience.nubank-2022.achievements.nubank-2.cv",
+            "portfolio": "experience.nubank-2022.achievements.nubank-2.portfolio"
+          }
+        },
+        {
+          "id": "nubank-3",
+          "text": {
+            "cv": "experience.nubank-2022.achievements.nubank-3.cv",
+            "portfolio": "experience.nubank-2022.achievements.nubank-3.portfolio"
+          }
+        },
+        {
+          "id": "nubank-4",
+          "text": {
+            "cv": "experience.nubank-2022.achievements.nubank-4.cv",
+            "portfolio": "experience.nubank-2022.achievements.nubank-4.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["ux-design", "gamification", "agile", "product-management"],
+      "sortOrder": 3
+    },
+    {
+      "id": "fofuuu-ceo-2019",
+      "company": {
+        "name": "Fofuuu",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Healthcare / EdTech"
+      },
+      "roles": [
+        {
+          "id": "fofuuu-ceo",
+          "title": "experience.fofuuu-ceo-2019.roles.fofuuu-ceo.title",
+          "employmentType": "full-time",
+          "startDate": "2019-02",
+          "endDate": "2024-05",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.fofuuu-ceo-2019.description.cv",
+        "coverLetter": "experience.fofuuu-ceo-2019.description.coverLetter",
+        "portfolio": "experience.fofuuu-ceo-2019.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "fofuuu-ceo-1",
+          "text": {
+            "cv": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-1.cv",
+            "portfolio": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-1.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ceo-2",
+          "text": {
+            "cv": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-2.cv",
+            "portfolio": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-2.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ceo-3",
+          "text": {
+            "cv": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-3.cv",
+            "portfolio": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-3.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ceo-4",
+          "text": {
+            "cv": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-4.cv",
+            "portfolio": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-4.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ceo-5",
+          "text": {
+            "cv": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-5.cv",
+            "portfolio": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-5.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ceo-6",
+          "text": {
+            "cv": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-6.cv",
+            "portfolio": "experience.fofuuu-ceo-2019.achievements.fofuuu-ceo-6.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["llm-integration", "react-vue", "unity3d", "cloud-platforms", "hipaa-lgpd", "strategic-leadership"],
+      "sortOrder": 4
+    },
+    {
+      "id": "fofuuu-cto-2017",
+      "company": {
+        "name": "Fofuuu",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Healthcare / EdTech"
+      },
+      "roles": [
+        {
+          "id": "fofuuu-cto",
+          "title": "experience.fofuuu-cto-2017.roles.fofuuu-cto.title",
+          "employmentType": "full-time",
+          "startDate": "2017-01",
+          "endDate": "2019-02",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.fofuuu-cto-2017.description.cv",
+        "coverLetter": "experience.fofuuu-cto-2017.description.coverLetter",
+        "portfolio": "experience.fofuuu-cto-2017.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "fofuuu-cto-1",
+          "text": {
+            "cv": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-1.cv",
+            "portfolio": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-1.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-cto-2",
+          "text": {
+            "cv": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-2.cv",
+            "portfolio": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-2.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-cto-3",
+          "text": {
+            "cv": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-3.cv",
+            "portfolio": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-3.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-cto-4",
+          "text": {
+            "cv": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-4.cv",
+            "portfolio": "experience.fofuuu-cto-2017.achievements.fofuuu-cto-4.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["unity3d", "dotnet", "cicd", "strategic-leadership", "gamification"],
+      "sortOrder": 5
+    },
+    {
+      "id": "fofuuu-ai-2016",
+      "company": {
+        "name": "Fofuuu",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Healthcare / AI"
+      },
+      "roles": [
+        {
+          "id": "fofuuu-ai-researcher",
+          "title": "experience.fofuuu-ai-2016.roles.fofuuu-ai-researcher.title",
+          "employmentType": "full-time",
+          "startDate": "2016-02",
+          "endDate": "2017-01",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.fofuuu-ai-2016.description.cv",
+        "coverLetter": "experience.fofuuu-ai-2016.description.coverLetter",
+        "portfolio": "experience.fofuuu-ai-2016.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "fofuuu-ai-1",
+          "text": {
+            "cv": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-1.cv",
+            "portfolio": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-1.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ai-2",
+          "text": {
+            "cv": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-2.cv",
+            "portfolio": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-2.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ai-3",
+          "text": {
+            "cv": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-3.cv",
+            "portfolio": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-3.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ai-4",
+          "text": {
+            "cv": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-4.cv",
+            "portfolio": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-4.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-ai-5",
+          "text": {
+            "cv": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-5.cv",
+            "portfolio": "experience.fofuuu-ai-2016.achievements.fofuuu-ai-5.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["deep-learning", "ml-tools"],
+      "sortOrder": 6
+    },
+    {
+      "id": "fofuuu-founder-2015",
+      "company": {
+        "name": "Fofuuu",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Healthcare / EdTech"
+      },
+      "roles": [
+        {
+          "id": "fofuuu-solo-founder",
+          "title": "experience.fofuuu-founder-2015.roles.fofuuu-solo-founder.title",
+          "employmentType": "full-time",
+          "startDate": "2015-05",
+          "endDate": "2016-12",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.fofuuu-founder-2015.description.cv",
+        "coverLetter": "experience.fofuuu-founder-2015.description.coverLetter",
+        "portfolio": "experience.fofuuu-founder-2015.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "fofuuu-founder-1",
+          "text": {
+            "cv": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-1.cv",
+            "portfolio": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-1.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-founder-2",
+          "text": {
+            "cv": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-2.cv",
+            "portfolio": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-2.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-founder-3",
+          "text": {
+            "cv": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-3.cv",
+            "portfolio": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-3.portfolio"
+          }
+        },
+        {
+          "id": "fofuuu-founder-4",
+          "text": {
+            "cv": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-4.cv",
+            "portfolio": "experience.fofuuu-founder-2015.achievements.fofuuu-founder-4.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["unity3d", "ux-design", "agile"],
+      "sortOrder": 7
+    },
+    {
+      "id": "betri-2013",
+      "company": {
+        "name": "Betri Studio",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "Digital Agency / Gamification"
+      },
+      "roles": [
+        {
+          "id": "betri-founder",
+          "title": "experience.betri-2013.roles.betri-founder.title",
+          "employmentType": "full-time",
+          "startDate": "2013-01",
+          "endDate": "2016-02",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.betri-2013.description.cv",
+        "coverLetter": "experience.betri-2013.description.coverLetter",
+        "portfolio": "experience.betri-2013.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "betri-1",
+          "text": {
+            "cv": "experience.betri-2013.achievements.betri-1.cv",
+            "portfolio": "experience.betri-2013.achievements.betri-1.portfolio"
+          }
+        },
+        {
+          "id": "betri-2",
+          "text": {
+            "cv": "experience.betri-2013.achievements.betri-2.cv",
+            "portfolio": "experience.betri-2013.achievements.betri-2.portfolio"
+          }
+        },
+        {
+          "id": "betri-3",
+          "text": {
+            "cv": "experience.betri-2013.achievements.betri-3.cv",
+            "portfolio": "experience.betri-2013.achievements.betri-3.portfolio"
+          }
+        },
+        {
+          "id": "betri-4",
+          "text": {
+            "cv": "experience.betri-2013.achievements.betri-4.cv",
+            "portfolio": "experience.betri-2013.achievements.betri-4.portfolio"
+          }
+        }
+      ],
+      "skillIds": ["unity3d", "gamification", "strategic-leadership"],
+      "sortOrder": 8
+    },
+    {
+      "id": "mcs-java-2012",
+      "company": {
+        "name": "MCS Java",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "E-Learning"
+      },
+      "roles": [
+        {
+          "id": "mcs-developer",
+          "title": "experience.mcs-java-2012.roles.mcs-developer.title",
+          "employmentType": "full-time",
+          "startDate": "2012-05",
+          "endDate": "2013-03",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.mcs-java-2012.description.cv",
+        "portfolio": "experience.mcs-java-2012.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "mcs-1",
+          "text": {
+            "cv": "experience.mcs-java-2012.achievements.mcs-1.cv",
+            "portfolio": "experience.mcs-java-2012.achievements.mcs-1.portfolio"
+          }
+        },
+        {
+          "id": "mcs-2",
+          "text": {
+            "cv": "experience.mcs-java-2012.achievements.mcs-2.cv",
+            "portfolio": "experience.mcs-java-2012.achievements.mcs-2.portfolio"
+          }
+        },
+        {
+          "id": "mcs-3",
+          "text": {
+            "cv": "experience.mcs-java-2012.achievements.mcs-3.cv",
+            "portfolio": "experience.mcs-java-2012.achievements.mcs-3.portfolio"
+          }
+        },
+        {
+          "id": "mcs-4",
+          "text": {
+            "cv": "experience.mcs-java-2012.achievements.mcs-4.cv",
+            "portfolio": "experience.mcs-java-2012.achievements.mcs-4.portfolio"
+          }
+        }
+      ],
+      "skillIds": [],
+      "sortOrder": 9
+    },
+    {
+      "id": "e-guru-2012",
+      "company": {
+        "name": "E-Guru",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "E-Learning"
+      },
+      "roles": [
+        {
+          "id": "e-guru-developer",
+          "title": "experience.e-guru-2012.roles.e-guru-developer.title",
+          "employmentType": "full-time",
+          "startDate": "2012-01",
+          "endDate": "2013-02",
+          "isCurrent": false
+        }
+      ],
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "experience.e-guru-2012.description.cv",
+        "portfolio": "experience.e-guru-2012.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "e-guru-1",
+          "text": {
+            "cv": "experience.e-guru-2012.achievements.e-guru-1.cv",
+            "portfolio": "experience.e-guru-2012.achievements.e-guru-1.portfolio"
+          }
+        },
+        {
+          "id": "e-guru-2",
+          "text": {
+            "cv": "experience.e-guru-2012.achievements.e-guru-2.cv",
+            "portfolio": "experience.e-guru-2012.achievements.e-guru-2.portfolio"
+          }
+        },
+        {
+          "id": "e-guru-3",
+          "text": {
+            "cv": "experience.e-guru-2012.achievements.e-guru-3.cv",
+            "portfolio": "experience.e-guru-2012.achievements.e-guru-3.portfolio"
+          }
+        },
+        {
+          "id": "e-guru-4",
+          "text": {
+            "cv": "experience.e-guru-2012.achievements.e-guru-4.cv",
+            "portfolio": "experience.e-guru-2012.achievements.e-guru-4.portfolio"
+          }
+        }
+      ],
+      "skillIds": [],
+      "sortOrder": 10
+    }
+  ],
+
+  "awards": [
+    {
+      "id": "santander-x-2021",
+      "title": "award.santander-x-2021.title",
+      "organization": "Santander (Global)",
+      "date": "2021",
+      "description": {
+        "cv": "award.santander-x-2021.description.cv",
+        "portfolio": "award.santander-x-2021.description.portfolio"
+      },
+      "link": "https://www.santanderx.com/en/blog/fofuuu-tricia-araujo-bruno-tachinardi",
+      "investment": "20000 EUR"
+    },
+    {
+      "id": "covid-rapid-2020",
+      "title": "award.covid-rapid-2020.title",
+      "organization": "City of Sao Paulo",
+      "date": "2020",
+      "description": {
+        "cv": "award.covid-rapid-2020.description.cv",
+        "portfolio": "award.covid-rapid-2020.description.portfolio"
+      },
+      "link": "https://revistapegn.globo.com/Startups/noticia/2020/04/prefeitura-de-sp-anuncia-startups-que-terao-r-1-milhao-para-combater-efeitos-do-coronavirus.html",
+      "investment": "100000 BRL"
+    },
+    {
+      "id": "social-impact-2019",
+      "title": "award.social-impact-2019.title",
+      "organization": "Games for Change / Itamaraty",
+      "date": "2019",
+      "description": {
+        "cv": "award.social-impact-2019.description.cv",
+        "portfolio": "award.social-impact-2019.description.portfolio"
+      },
+      "link": null,
+      "investment": null
+    },
+    {
+      "id": "samsung-2019",
+      "title": "award.samsung-2019.title",
+      "organization": "Samsung",
+      "date": "2019",
+      "description": {
+        "cv": "award.samsung-2019.description.cv",
+        "portfolio": "award.samsung-2019.description.portfolio"
+      },
+      "link": "https://youtu.be/LYUtFdxuQds",
+      "investment": "200000 BRL"
+    },
+    {
+      "id": "big-children-2018",
+      "title": "award.big-children-2018.title",
+      "organization": "BIG Festival",
+      "date": "2018",
+      "description": {
+        "cv": "award.big-children-2018.description.cv",
+        "portfolio": "award.big-children-2018.description.portfolio"
+      },
+      "link": null,
+      "investment": null
+    },
+    {
+      "id": "artemisia-2017",
+      "title": "award.artemisia-2017.title",
+      "organization": "Artemisia / Sabin Institute",
+      "date": "2017",
+      "description": {
+        "cv": "award.artemisia-2017.description.cv",
+        "portfolio": "award.artemisia-2017.description.portfolio"
+      },
+      "link": "https://pesquisaparainovacao.fapesp.br/instituto_sabin_e_artemisia_selecionam_17_startups_de_impacto_social/307",
+      "investment": null
+    },
+    {
+      "id": "sirio-libanes-2016",
+      "title": "award.sirio-libanes-2016.title",
+      "organization": "Sirio-Libanes Hospital",
+      "date": "2016",
+      "description": {
+        "cv": "award.sirio-libanes-2016.description.cv",
+        "portfolio": "award.sirio-libanes-2016.description.portfolio"
+      },
+      "link": "https://www.pptasaude.com.br/noticias/3501/startup-fofuuu-e-vencedora-do-premio-empreenda-saude-2016/",
+      "investment": "50000 BRL"
+    },
+    {
+      "id": "biostartup-2016",
+      "title": "award.biostartup-2016.title",
+      "organization": "BioStartup Lab",
+      "date": "2016",
+      "description": {
+        "cv": "award.biostartup-2016.description.cv",
+        "portfolio": "award.biostartup-2016.description.portfolio"
+      },
+      "link": "https://www.linkedin.com/pulse/hist%25C3%25B3ria-por-tr%25C3%25A1s-do-biostartup-lab-rafael-silva/",
+      "investment": "200000 BRL"
+    },
+    {
+      "id": "big-edu-2015",
+      "title": "award.big-edu-2015.title",
+      "organization": "BIG Festival / BNDES",
+      "date": "2015",
+      "description": {
+        "cv": "award.big-edu-2015.description.cv",
+        "portfolio": "award.big-edu-2015.description.portfolio"
+      },
+      "link": "https://gizbr.uol.com.br/com-premio-no-big-festival-fofuu-mostra-que-games-podem-ser-muito-mais-do-que-apenas-entretenimento/",
+      "investment": "20000 BRL"
+    }
+  ],
+
+  "education": [
+    {
+      "id": "anhembi-game-design",
+      "degree": "education.anhembi-game-design.degree",
+      "institution": "Anhembi Morumbi University",
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil"
+      },
+      "startDate": "2008-01",
+      "endDate": "2011-12",
+      "achievements": [
+        {
+          "id": "edu-1",
+          "text": "education.anhembi-game-design.achievements.edu-1"
+        },
+        {
+          "id": "edu-2",
+          "text": "education.anhembi-game-design.achievements.edu-2"
+        },
+        {
+          "id": "edu-3",
+          "text": "education.anhembi-game-design.achievements.edu-3"
+        },
+        {
+          "id": "edu-4",
+          "text": "education.anhembi-game-design.achievements.edu-4"
+        }
+      ]
+    }
+  ],
+
+  "internships": [
+    {
+      "id": "e-guru-intern",
+      "company": {
+        "name": "E-Guru",
+        "logoUrl": null,
+        "websiteUrl": null,
+        "industry": "E-Learning"
+      },
+      "role": "internship.e-guru-intern.role",
+      "startDate": "2010-10",
+      "endDate": "2011-05",
+      "location": {
+        "city": "Sao Paulo",
+        "country": "Brazil",
+        "isRemote": false
+      },
+      "description": {
+        "cv": "internship.e-guru-intern.description.cv",
+        "portfolio": "internship.e-guru-intern.description.portfolio"
+      },
+      "achievements": [
+        {
+          "id": "intern-1",
+          "text": {
+            "cv": "internship.e-guru-intern.achievements.intern-1.cv",
+            "portfolio": "internship.e-guru-intern.achievements.intern-1.portfolio"
+          }
+        },
+        {
+          "id": "intern-2",
+          "text": {
+            "cv": "internship.e-guru-intern.achievements.intern-2.cv",
+            "portfolio": "internship.e-guru-intern.achievements.intern-2.portfolio"
+          }
+        },
+        {
+          "id": "intern-3",
+          "text": {
+            "cv": "internship.e-guru-intern.achievements.intern-3.cv",
+            "portfolio": "internship.e-guru-intern.achievements.intern-3.portfolio"
+          }
+        }
+      ],
+      "skillIds": []
+    }
+  ]
+}
