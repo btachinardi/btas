@@ -6,6 +6,7 @@ import {
   View,
   StyleSheet,
   Link,
+  Image,
 } from '@react-pdf/renderer';
 import portfolioData from '../../data/portfolio.json';
 import enTranslations from '../../public/data/translations/en.json';
@@ -98,6 +99,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.gray700,
   },
+  profileImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    alignSelf: 'center',
+    marginBottom: 12,
+    objectFit: 'cover',
+  },
+  profileImageContainer: {
+    alignItems: 'center',
+    marginBottom: 12,
+  },
   sidebarName: {
     fontSize: 13,
     fontFamily: 'Helvetica-Bold',
@@ -113,14 +126,23 @@ const styles = StyleSheet.create({
   },
   contactItem: {
     flexDirection: 'row',
-    marginBottom: 5,
-    alignItems: 'flex-start',
+    marginBottom: 6,
+    alignItems: 'center',
   },
-  contactIcon: {
-    width: 14,
-    fontSize: 9,
-    color: colors.primary,
-    marginRight: 5,
+  contactIconBox: {
+    width: 18,
+    height: 18,
+    borderRadius: 3,
+    backgroundColor: colors.primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  contactIconText: {
+    fontSize: 7,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.white,
+    textAlign: 'center',
   },
   contactText: {
     fontSize: 7.5,
@@ -534,6 +556,9 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
         <View style={styles.sidebar}>
           {/* Profile Section */}
           <View style={styles.sidebarSection}>
+            <View style={styles.profileImageContainer}>
+              <Image src="/images/profile-256.png" style={styles.profileImage} />
+            </View>
             <Text style={styles.sidebarName}>{profile.displayName}</Text>
             <Text style={styles.sidebarTitle}>{resolveText(profile.title, locale)}</Text>
           </View>
@@ -542,20 +567,28 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
           <View style={styles.sidebarSection}>
             <Text style={styles.sidebarSectionTitle}>{sectionLabels.contact[locale]}</Text>
             <View style={styles.contactItem}>
-              <Text style={styles.contactIcon}>✉</Text>
+              <View style={styles.contactIconBox}>
+                <Text style={styles.contactIconText}>@</Text>
+              </View>
               <Text style={styles.contactText}>{profile.email}</Text>
             </View>
             <View style={styles.contactItem}>
-              <Text style={styles.contactIcon}>☎</Text>
+              <View style={styles.contactIconBox}>
+                <Text style={styles.contactIconText}>#</Text>
+              </View>
               <Text style={styles.contactText}>{profile.phone}</Text>
             </View>
             <View style={styles.contactItem}>
-              <Text style={styles.contactIcon}>◎</Text>
+              <View style={styles.contactIconBox}>
+                <Text style={styles.contactIconText}>O</Text>
+              </View>
               <Text style={styles.contactText}>{profileLocation}</Text>
             </View>
             {profile.social.linkedin && (
               <View style={styles.contactItem}>
-                <Text style={styles.contactIcon}>in</Text>
+                <View style={styles.contactIconBox}>
+                  <Text style={styles.contactIconText}>in</Text>
+                </View>
                 <Link src={profile.social.linkedin} style={styles.contactLink}>
                   <Text>LinkedIn</Text>
                 </Link>
@@ -563,7 +596,9 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
             )}
             {profile.social.github && (
               <View style={styles.contactItem}>
-                <Text style={styles.contactIcon}>⌘</Text>
+                <View style={styles.contactIconBox}>
+                  <Text style={styles.contactIconText}>&lt;/&gt;</Text>
+                </View>
                 <Link src={profile.social.github} style={styles.contactLink}>
                   <Text>GitHub</Text>
                 </Link>
@@ -649,6 +684,9 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
         {/* Sidebar continuation */}
         <View style={[styles.sidebar, { backgroundColor: colors.gray800 }]}>
           <View style={styles.sidebarSection}>
+            <View style={styles.profileImageContainer}>
+              <Image src="/images/profile-256.png" style={styles.profileImage} />
+            </View>
             <Text style={styles.sidebarName}>{profile.displayName}</Text>
             <Text style={[styles.sidebarTitle, { marginBottom: 25 }]}>Page 2</Text>
           </View>
@@ -701,6 +739,9 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
         {/* Sidebar */}
         <View style={[styles.sidebar, { backgroundColor: colors.gray800 }]}>
           <View style={styles.sidebarSection}>
+            <View style={styles.profileImageContainer}>
+              <Image src="/images/profile-256.png" style={styles.profileImage} />
+            </View>
             <Text style={styles.sidebarName}>{profile.displayName}</Text>
             <Text style={[styles.sidebarTitle, { marginBottom: 25 }]}>Page 3</Text>
           </View>

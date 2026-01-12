@@ -4,6 +4,16 @@ import { motion } from 'framer-motion';
 import { useAwards } from '../hooks';
 import { useLegacyLocale } from '../contexts/locale.context';
 
+const getLinkLabel = (url: string): { en: string; pt: string; es: string } => {
+  if (url.includes('youtu.be') || url.includes('youtube.com')) {
+    return { en: 'Watch Video', pt: 'Assistir Vídeo', es: 'Ver Video' };
+  }
+  if (url.includes('linkedin.com/pulse')) {
+    return { en: 'Read Post', pt: 'Ler Publicação', es: 'Leer Publicación' };
+  }
+  return { en: 'Read Article', pt: 'Ler Artigo', es: 'Leer Artículo' };
+};
+
 const Awards: React.FC = () => {
   const { awards, isLoading } = useAwards();
   const { t } = useLegacyLocale();
@@ -71,7 +81,7 @@ const Awards: React.FC = () => {
                   className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg transition-colors text-sm font-medium"
                 >
                   <ExternalLink size={16} />
-                  {t({ en: 'Watch Product Demo', pt: 'Ver Demo do Produto', es: 'Ver Demo del Producto' })}
+                  {t(getLinkLabel(award.link))}
                 </a>
               )}
             </motion.div>
