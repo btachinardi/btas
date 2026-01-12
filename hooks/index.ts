@@ -15,7 +15,7 @@ export type { ResolvedExperience } from './use-experiences.hook';
 
 // Legacy experience hook (backward compatibility)
 export { useExperienceLegacy } from './use-experience-legacy.hook';
-export type { LegacyExperience } from './use-experience-legacy.hook';
+export type { LegacyExperience, LegacySkill } from './use-experience-legacy.hook';
 
 // Skills hooks
 export {

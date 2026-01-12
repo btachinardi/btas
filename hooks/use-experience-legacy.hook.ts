@@ -1,5 +1,16 @@
 import { useMemo } from 'react';
 import { useExperiences } from './use-experiences.hook';
+import { usePortfolioData } from './use-portfolio-data.hook';
+
+/**
+ * Skill with category information for colored display
+ */
+export interface LegacySkill {
+  id: string;
+  name: string;
+  categoryId: string;
+  categoryColor: string;
+}
 
 /**
  * Legacy experience format for backward compatibility with Experience.tsx
@@ -12,7 +23,7 @@ export interface LegacyExperience {
   location: string;
   description: string;
   achievements: string[];
-  skills: string[];
+  skills: LegacySkill[];
 }
 
 /**
@@ -25,8 +36,14 @@ export function useExperienceLegacy(): {
   isLoading: boolean;
 } {
   const { experiences, isLoading } = useExperiences();
+  const { data } = usePortfolioData();
 
   const legacyExperiences = useMemo((): LegacyExperience[] => {
+    // Create a map of category ID to color
+    const categoryColorMap = new Map(
+      data?.skillCategories.map((cat) => [cat.id, cat.color]) ?? []
+    );
+
     return experiences.map((exp) => ({
       company: exp.companyName,
       role: exp.roleTitle,
@@ -34,9 +51,14 @@ export function useExperienceLegacy(): {
       location: exp.location,
       description: exp.description,
       achievements: exp.achievements,
-      skills: exp.skills.map((skill) => skill.name),
+      skills: exp.skills.map((skill) => ({
+        id: skill.id,
+        name: skill.name,
+        categoryId: skill.categoryId,
+        categoryColor: categoryColorMap.get(skill.categoryId) ?? 'slate',
+      })),
     }));
-  }, [experiences]);
+  }, [experiences, data]);
 
   return { experiences: legacyExperiences, isLoading };
 }
