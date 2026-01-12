@@ -22,7 +22,7 @@ async function optimizeProfileImage() {
     // WebP version (best compression)
     const webpOutput = join(outputDir, `profile-${size}.webp`);
     await sharp(inputPath)
-      .resize(size, size, { fit: 'cover', position: 'top' })
+      .resize(size, size, { fit: 'cover', position: 'center' })
       .webp({ quality: 85 })
       .toFile(webpOutput);
 
@@ -32,7 +32,7 @@ async function optimizeProfileImage() {
     // PNG fallback for older browsers
     const pngOutput = join(outputDir, `profile-${size}.png`);
     await sharp(inputPath)
-      .resize(size, size, { fit: 'cover', position: 'top' })
+      .resize(size, size, { fit: 'cover', position: 'center' })
       .png({ compressionLevel: 9, palette: true })
       .toFile(pngOutput);
 
