@@ -95,6 +95,7 @@ export interface PortfolioData {
   profile: Profile;
   languages: Language[];
   skillCategories: SkillCategory[];
+  skillGroups: SkillGroup[];
   skills: Skill[];
   experiences: Experience[];
   awards: Award[];
@@ -160,11 +161,20 @@ export interface SkillCategory {
   color: string;
 }
 
+/** Group for related skills within a category (e.g., "Databases" within "Backend") */
+export interface SkillGroup {
+  id: string;
+  name: string;
+  categoryId: string;
+}
+
 /** Technical or soft skill */
 export interface Skill {
   id: string;
   name: string;
   categoryId: string;
+  /** Optional group for related skills (e.g., PostgreSQL -> "databases" group) */
+  groupId?: string;
   proficiency: number;
 }
 

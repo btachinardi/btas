@@ -42,15 +42,10 @@ const Awards: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-gradient-to-br from-card to-slate-900 p-10 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1"
             >
-              <div className="flex justify-between items-start mb-6">
-                <div className="p-4 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <div className="mb-6">
+                <div className="p-4 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors inline-block">
                   <Trophy size={28} />
                 </div>
-                {award.investment && (
-                  <span className="px-4 py-1.5 bg-emerald-500/10 text-emerald-400 text-sm font-bold uppercase tracking-wide rounded-full border border-emerald-500/20">
-                    {award.investment}
-                  </span>
-                )}
               </div>
 
               <h3 className="text-2xl font-bold text-white mb-3 leading-tight">
