@@ -12,7 +12,7 @@ import enTranslations from '../../public/data/translations/en.json';
 import ptTranslations from '../../public/data/translations/pt.json';
 import esTranslations from '../../public/data/translations/es.json';
 import type { Locale, PortfolioData, Skill, SkillCategory } from '../../types/portfolio-data.types';
-import { getLanguageLevelDisplay } from '../../utils/localization';
+import { getLanguageLevelDisplay, resolveLocalized, resolveLocalizedDocument } from '../../utils/localization';
 import { formatDateRange } from '../../utils/date';
 
 // Type assertion for imported JSON
@@ -31,7 +31,7 @@ function t(key: string, locale: Locale): string {
   return translations[key] ?? translationMaps.en[key] ?? key;
 }
 
-// Helper to resolve document variant keys (e.g., { cv: "key.cv", coverLetter: "key.cl" })
+// Helper to resolve document variant keys
 function td(keys: { cv?: string; coverLetter?: string; portfolio?: string }, locale: Locale, docType: 'cv' | 'coverLetter' | 'portfolio' = 'cv'): string {
   const key = keys[docType] ?? keys.cv ?? '';
   return t(key, locale);
@@ -40,160 +40,348 @@ function td(keys: { cv?: string; coverLetter?: string; portfolio?: string }, loc
 // Helper to resolve localized string or translation key
 function resolveText(text: { en?: string; pt?: string; es?: string } | string, locale: Locale): string {
   if (typeof text === 'string') {
-    // It might be a translation key or direct text
     return t(text, locale) !== text ? t(text, locale) : text;
   }
-  // It's a localized string object
   return text[locale] ?? text.en ?? '';
 }
 
-// PDF Styles
+// Color palette - inspired by portfolio but adapted for light theme
+const colors = {
+  // Primary brand color
+  primary: '#0284c7', // sky-600 (slightly darker for print)
+  primaryLight: '#e0f2fe', // sky-100
+  primaryMuted: '#7dd3fc', // sky-300
+
+  // Neutral palette
+  white: '#ffffff',
+  gray50: '#f8fafc',
+  gray100: '#f1f5f9',
+  gray200: '#e2e8f0',
+  gray300: '#cbd5e1',
+  gray400: '#94a3b8',
+  gray500: '#64748b',
+  gray600: '#475569',
+  gray700: '#334155',
+  gray800: '#1e293b',
+  gray900: '#0f172a',
+};
+
+// PDF Styles - Modern two-column layout
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
-    fontSize: 10,
-    fontFamily: 'Helvetica',
-    color: '#1f2937',
-  },
-  header: {
-    marginBottom: 20,
-    borderBottomWidth: 2,
-    borderBottomColor: '#0ea5e9',
-    paddingBottom: 15,
-  },
-  name: {
-    fontSize: 28,
-    fontFamily: 'Helvetica-Bold',
-    color: '#111827',
-    marginBottom: 4,
-  },
-  title: {
-    fontSize: 14,
-    color: '#0ea5e9',
-    marginBottom: 12,
-  },
-  contactRow: {
     flexDirection: 'row',
-    gap: 20,
-    marginBottom: 4,
+    fontFamily: 'Helvetica',
+    fontSize: 9,
+    color: colors.gray700,
+    backgroundColor: colors.white,
+  },
+
+  // Sidebar styles
+  sidebar: {
+    width: 170,
+    backgroundColor: colors.gray900,
+    padding: 18,
+    paddingTop: 25,
+    color: colors.white,
+  },
+  sidebarSection: {
+    marginBottom: 18,
+  },
+  sidebarSectionTitle: {
+    fontSize: 8,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.primary,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    marginBottom: 8,
+    paddingBottom: 3,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray700,
+  },
+  sidebarName: {
+    fontSize: 13,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.white,
+    textAlign: 'center',
+    marginBottom: 3,
+  },
+  sidebarTitle: {
+    fontSize: 8,
+    color: colors.primaryMuted,
+    textAlign: 'center',
+    marginBottom: 18,
   },
   contactItem: {
-    fontSize: 9,
-    color: '#6b7280',
+    flexDirection: 'row',
+    marginBottom: 5,
+    alignItems: 'flex-start',
   },
+  contactIcon: {
+    width: 14,
+    fontSize: 9,
+    color: colors.primary,
+    marginRight: 5,
+  },
+  contactText: {
+    fontSize: 7.5,
+    color: colors.gray300,
+    flex: 1,
+  },
+  contactLink: {
+    fontSize: 7.5,
+    color: colors.primaryMuted,
+    textDecoration: 'none',
+  },
+  skillCategory: {
+    marginBottom: 10,
+  },
+  skillCategoryName: {
+    fontSize: 7.5,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray200,
+    marginBottom: 3,
+  },
+  sidebarSkillItem: {
+    fontSize: 7,
+    color: colors.gray400,
+    marginBottom: 1.5,
+    paddingLeft: 6,
+  },
+  languageItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  languageName: {
+    fontSize: 7.5,
+    color: colors.gray200,
+  },
+  languageLevel: {
+    fontSize: 6.5,
+    color: colors.gray400,
+  },
+
+  // Main content styles
+  main: {
+    flex: 1,
+    padding: 22,
+    paddingTop: 25,
+  },
+  header: {
+    marginBottom: 16,
+    paddingBottom: 12,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.primary,
+  },
+  name: {
+    fontSize: 24,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray900,
+    marginBottom: 2,
+  },
+  title: {
+    fontSize: 11,
+    color: colors.primary,
+    marginBottom: 6,
+  },
+  headerContactRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  headerContactItem: {
+    fontSize: 7.5,
+    color: colors.gray500,
+  },
+
   section: {
-    marginTop: 16,
+    marginBottom: 14,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 8,
+    paddingBottom: 3,
+    borderBottomWidth: 1.5,
+    borderBottomColor: colors.primary,
   },
   sectionTitle: {
-    fontSize: 14,
-    fontFamily: 'Helvetica-Bold',
-    color: '#111827',
-    marginBottom: 10,
-    paddingBottom: 4,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
-  },
-  paragraph: {
     fontSize: 10,
-    lineHeight: 1.5,
-    color: '#374151',
-    marginBottom: 8,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray900,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+
+  profileText: {
+    fontSize: 8.5,
+    lineHeight: 1.55,
+    color: colors.gray600,
+    textAlign: 'justify',
+  },
+
+  // Job entry styles
+  jobEntry: {
+    marginBottom: 12,
   },
   jobHeader: {
-    marginBottom: 6,
+    marginBottom: 3,
+  },
+  jobTitleRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 1,
   },
   jobTitle: {
-    fontSize: 11,
+    fontSize: 9.5,
     fontFamily: 'Helvetica-Bold',
-    color: '#111827',
-  },
-  jobCompany: {
-    fontSize: 10,
-    color: '#0ea5e9',
+    color: colors.gray800,
+    flex: 1,
   },
   jobDate: {
-    fontSize: 9,
-    color: '#6b7280',
-    marginBottom: 6,
+    fontSize: 7.5,
+    color: colors.gray500,
+    textAlign: 'right',
   },
+  jobCompanyRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 3,
+  },
+  jobCompany: {
+    fontSize: 8.5,
+    color: colors.primary,
+  },
+  jobLocation: {
+    fontSize: 7.5,
+    color: colors.gray500,
+    marginLeft: 5,
+  },
+  jobDescription: {
+    fontSize: 8,
+    lineHeight: 1.45,
+    color: colors.gray600,
+    marginBottom: 3,
+  },
+
+  // Bullet list styles
   bulletList: {
-    marginLeft: 12,
-    marginBottom: 8,
+    marginLeft: 2,
+    marginBottom: 3,
   },
   bulletItem: {
     flexDirection: 'row',
-    marginBottom: 3,
+    marginBottom: 1.5,
   },
   bullet: {
-    width: 12,
-    fontSize: 10,
-    color: '#0ea5e9',
+    width: 8,
+    fontSize: 7,
+    color: colors.primary,
   },
   bulletText: {
     flex: 1,
-    fontSize: 9,
+    fontSize: 7.5,
     lineHeight: 1.4,
-    color: '#374151',
+    color: colors.gray600,
   },
-  skillsGrid: {
+
+  // Tech stack badge row
+  techStackRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 6,
+    gap: 3,
+    marginTop: 3,
   },
-  skillCategory: {
-    width: '48%',
-    marginBottom: 10,
+  techBadge: {
+    fontSize: 6.5,
+    color: colors.gray500,
+    backgroundColor: colors.gray100,
+    paddingVertical: 1.5,
+    paddingHorizontal: 4,
+    borderRadius: 2,
   },
-  skillCategoryTitle: {
-    fontSize: 10,
-    fontFamily: 'Helvetica-Bold',
-    color: '#111827',
-    marginBottom: 4,
-  },
-  skillItem: {
-    fontSize: 9,
-    color: '#374151',
-    marginBottom: 2,
-  },
-  link: {
-    color: '#0ea5e9',
-    textDecoration: 'none',
-  },
+
+  // Award styles
   awardItem: {
     marginBottom: 8,
   },
   awardTitle: {
-    fontSize: 10,
+    fontSize: 8.5,
     fontFamily: 'Helvetica-Bold',
-    color: '#111827',
+    color: colors.gray800,
   },
-  awardDetails: {
-    fontSize: 9,
-    color: '#6b7280',
+  awardOrg: {
+    fontSize: 7.5,
+    color: colors.primary,
   },
-  techStack: {
-    fontSize: 9,
-    color: '#6b7280',
-    fontStyle: 'italic',
-    marginTop: 4,
+  awardDate: {
+    fontSize: 6.5,
+    color: colors.gray500,
+    marginLeft: 6,
+  },
+  awardDescription: {
+    fontSize: 7.5,
+    lineHeight: 1.4,
+    color: colors.gray600,
+    marginTop: 2,
+  },
+
+  // Education styles
+  educationItem: {
     marginBottom: 8,
   },
-  languageRow: {
+  educationDegree: {
+    fontSize: 9,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray800,
+  },
+  educationInstitution: {
+    fontSize: 8,
+    color: colors.primary,
+    marginBottom: 1,
+  },
+  educationDetails: {
+    fontSize: 7,
+    color: colors.gray500,
+  },
+
+  // Link style
+  link: {
+    color: colors.primary,
+    textDecoration: 'none',
+  },
+
+  // Page continuation header
+  pageHeader: {
+    marginBottom: 12,
+    paddingBottom: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray200,
     flexDirection: 'row',
-    gap: 30,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  pageHeaderName: {
+    fontSize: 10,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray700,
+  },
+  pageHeaderPage: {
+    fontSize: 8,
+    color: colors.gray400,
   },
 });
 
 // Category display names for PDF
 const categoryDisplayNames: Record<string, Record<Locale, string>> = {
-  'ai-ml': { en: 'AI & Machine Learning', pt: 'IA & Aprendizado de Maquina', es: 'IA & Aprendizaje Automatico' },
-  'frontend': { en: 'Frontend Development', pt: 'Desenvolvimento Frontend', es: 'Desarrollo Frontend' },
-  'backend': { en: 'Backend Development', pt: 'Desenvolvimento Backend', es: 'Desarrollo Backend' },
-  'devops': { en: 'DevOps & Cloud Infrastructure', pt: 'DevOps & Infraestrutura Cloud', es: 'DevOps & Infraestructura Cloud' },
-  'healthcare': { en: 'Healthcare & Compliance', pt: 'Saude & Conformidade', es: 'Salud & Cumplimiento' },
-  'product': { en: 'Product & Design', pt: 'Produto & Design', es: 'Producto & Diseno' },
-  'leadership': { en: 'Leadership', pt: 'Lideranca', es: 'Liderazgo' },
+  'ai-ml': { en: 'AI & ML', pt: 'IA & ML', es: 'IA & ML' },
+  'frontend': { en: 'Frontend', pt: 'Frontend', es: 'Frontend' },
+  'backend': { en: 'Backend', pt: 'Backend', es: 'Backend' },
+  'devops': { en: 'DevOps & Cloud', pt: 'DevOps & Cloud', es: 'DevOps & Cloud' },
+  'healthcare': { en: 'Healthcare', pt: 'Saúde', es: 'Salud' },
+  'product': { en: 'Product', pt: 'Produto', es: 'Producto' },
+  'leadership': { en: 'Leadership', pt: 'Liderança', es: 'Liderazgo' },
 };
 
 // Helper to get category display name
@@ -202,7 +390,6 @@ function getCategoryDisplayName(categoryId: string, locale: Locale): string {
   if (names) {
     return names[locale] ?? names.en;
   }
-  // Fallback to category name from data
   const category = data.skillCategories.find((c: SkillCategory) => c.id === categoryId);
   if (category?.name) {
     return resolveText(category.name, locale);
@@ -211,7 +398,7 @@ function getCategoryDisplayName(categoryId: string, locale: Locale): string {
 }
 
 // Group skills by category
-function getSkillsByCategory(locale: Locale): Record<string, string[]> {
+function getSkillsByCategory(): Record<string, string[]> {
   return data.skills.reduce((acc: Record<string, string[]>, skill: Skill) => {
     const categoryId = skill.categoryId;
     if (!acc[categoryId]) {
@@ -245,6 +432,18 @@ function getSkillNamesFromIds(skillIds: string[]): string[] {
     .filter((name): name is string => name !== undefined);
 }
 
+// Section translations
+const sectionLabels: Record<string, Record<Locale, string>> = {
+  profile: { en: 'Profile', pt: 'Perfil', es: 'Perfil' },
+  experience: { en: 'Professional Experience', pt: 'Experiência Profissional', es: 'Experiencia Profesional' },
+  education: { en: 'Education', pt: 'Educação', es: 'Educación' },
+  skills: { en: 'Skills', pt: 'Competências', es: 'Habilidades' },
+  languages: { en: 'Languages', pt: 'Idiomas', es: 'Idiomas' },
+  awards: { en: 'Awards & Honors', pt: 'Prêmios e Honras', es: 'Premios y Honores' },
+  contact: { en: 'Contact', pt: 'Contato', es: 'Contacto' },
+  internships: { en: 'Internships', pt: 'Estágios', es: 'Pasantías' },
+};
+
 // Helper component for job entries
 const JobEntry: React.FC<{
   role: string;
@@ -254,24 +453,34 @@ const JobEntry: React.FC<{
   description: string;
   achievements: string[];
   skills?: string[];
-}> = ({ role, company, location, period, description, achievements, skills }) => (
-  <View style={styles.section} wrap={false}>
+  compact?: boolean;
+}> = ({ role, company, location, period, description, achievements, skills, compact = false }) => (
+  <View style={styles.jobEntry} wrap={false}>
     <View style={styles.jobHeader}>
-      <Text style={styles.jobTitle}>{role}</Text>
-      <Text style={styles.jobCompany}>{company} • {location}</Text>
-      <Text style={styles.jobDate}>{period}</Text>
+      <View style={styles.jobTitleRow}>
+        <Text style={styles.jobTitle}>{role}</Text>
+        <Text style={styles.jobDate}>{period}</Text>
+      </View>
+      <View style={styles.jobCompanyRow}>
+        <Text style={styles.jobCompany}>{company}</Text>
+        <Text style={styles.jobLocation}>• {location}</Text>
+      </View>
     </View>
-    <Text style={styles.paragraph}>{description}</Text>
+    <Text style={styles.jobDescription}>{description}</Text>
     <View style={styles.bulletList}>
-      {achievements.map((achievement, idx) => (
+      {achievements.slice(0, compact ? 3 : 4).map((achievement, idx) => (
         <View key={idx} style={styles.bulletItem}>
-          <Text style={styles.bullet}>•</Text>
+          <Text style={styles.bullet}>▸</Text>
           <Text style={styles.bulletText}>{achievement}</Text>
         </View>
       ))}
     </View>
     {skills && skills.length > 0 && (
-      <Text style={styles.techStack}>Technologies: {skills.join(', ')}</Text>
+      <View style={styles.techStackRow}>
+        {skills.slice(0, compact ? 4 : 6).map((skill, idx) => (
+          <Text key={idx} style={styles.techBadge}>{skill}</Text>
+        ))}
+      </View>
     )}
   </View>
 );
@@ -282,7 +491,7 @@ interface CVDocumentProps {
 
 const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
   const { profile, experiences, education, languages, awards, internships } = data;
-  const skillsByCategory = getSkillsByCategory(locale);
+  const skillsByCategory = getSkillsByCategory();
 
   // Format profile location
   const profileLocation = `${profile.location.city}, ${profile.location.country}`;
@@ -314,67 +523,165 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
     skills: getSkillNamesFromIds(intern.skillIds),
   }));
 
+  // Priority order for skill categories
+  const categoryOrder = ['ai-ml', 'backend', 'frontend', 'devops', 'product', 'healthcare', 'leadership'];
+
   return (
     <Document>
-      {/* Page 1 - Header, Profile, Skills, First Jobs */}
+      {/* Page 1 - Header and First Jobs with Sidebar */}
       <Page size="A4" style={styles.page}>
-        {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.name}>{profile.displayName}</Text>
-          <Text style={styles.title}>{resolveText(profile.title, locale)}</Text>
-          <View style={styles.contactRow}>
-            <Text style={styles.contactItem}>{profileLocation}</Text>
-            <Text style={styles.contactItem}>{profile.phone}</Text>
-            <Text style={styles.contactItem}>{profile.email}</Text>
+        {/* Sidebar */}
+        <View style={styles.sidebar}>
+          {/* Profile Section */}
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarName}>{profile.displayName}</Text>
+            <Text style={styles.sidebarTitle}>{resolveText(profile.title, locale)}</Text>
           </View>
-          <View style={styles.contactRow}>
+
+          {/* Contact Section */}
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarSectionTitle}>{sectionLabels.contact[locale]}</Text>
+            <View style={styles.contactItem}>
+              <Text style={styles.contactIcon}>✉</Text>
+              <Text style={styles.contactText}>{profile.email}</Text>
+            </View>
+            <View style={styles.contactItem}>
+              <Text style={styles.contactIcon}>☎</Text>
+              <Text style={styles.contactText}>{profile.phone}</Text>
+            </View>
+            <View style={styles.contactItem}>
+              <Text style={styles.contactIcon}>◎</Text>
+              <Text style={styles.contactText}>{profileLocation}</Text>
+            </View>
             {profile.social.linkedin && (
-              <Link src={profile.social.linkedin} style={styles.link}>
-                <Text style={styles.contactItem}>LinkedIn</Text>
-              </Link>
+              <View style={styles.contactItem}>
+                <Text style={styles.contactIcon}>in</Text>
+                <Link src={profile.social.linkedin} style={styles.contactLink}>
+                  <Text>LinkedIn</Text>
+                </Link>
+              </View>
             )}
             {profile.social.github && (
-              <Link src={profile.social.github} style={styles.link}>
-                <Text style={styles.contactItem}>GitHub</Text>
-              </Link>
-            )}
-            {profile.social.youtube && (
-              <Link src={profile.social.youtube} style={styles.link}>
-                <Text style={styles.contactItem}>Fofuuu Product Showcase</Text>
-              </Link>
+              <View style={styles.contactItem}>
+                <Text style={styles.contactIcon}>⌘</Text>
+                <Link src={profile.social.github} style={styles.contactLink}>
+                  <Text>GitHub</Text>
+                </Link>
+              </View>
             )}
           </View>
-        </View>
 
-        {/* Profile */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Profile</Text>
-          <Text style={styles.paragraph}>
-            {td(profile.summary as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')}
-          </Text>
-        </View>
+          {/* Skills Section */}
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarSectionTitle}>{sectionLabels.skills[locale]}</Text>
+            {categoryOrder
+              .filter(catId => skillsByCategory[catId])
+              .map((categoryId) => (
+                <View key={categoryId} style={styles.skillCategory}>
+                  <Text style={styles.skillCategoryName}>
+                    {getCategoryDisplayName(categoryId, locale)}
+                  </Text>
+                  {skillsByCategory[categoryId].slice(0, 4).map((skill, idx) => (
+                    <Text key={idx} style={styles.sidebarSkillItem}>• {skill}</Text>
+                  ))}
+                </View>
+              ))}
+          </View>
 
-        {/* Skills */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Skills</Text>
-          <View style={styles.skillsGrid}>
-            {Object.entries(skillsByCategory).map(([categoryId, skills]) => (
-              <View key={categoryId} style={styles.skillCategory}>
-                <Text style={styles.skillCategoryTitle}>
-                  {getCategoryDisplayName(categoryId, locale)}
-                </Text>
-                {skills.map((skill, idx) => (
-                  <Text key={idx} style={styles.skillItem}>• {skill}</Text>
-                ))}
+          {/* Languages Section */}
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarSectionTitle}>{sectionLabels.languages[locale]}</Text>
+            {languages.map((lang) => (
+              <View key={lang.id} style={styles.languageItem}>
+                <Text style={styles.languageName}>{resolveText(lang.name, locale)}</Text>
+                <Text style={styles.languageLevel}>{getLanguageLevelDisplay(lang.level, locale)}</Text>
               </View>
             ))}
           </View>
         </View>
 
-        {/* Employment History - First entries */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Employment History</Text>
-          {mappedExperiences.slice(0, 2).map((job) => (
+        {/* Main Content */}
+        <View style={styles.main}>
+          {/* Header */}
+          <View style={styles.header}>
+            <Text style={styles.name}>{profile.displayName}</Text>
+            <Text style={styles.title}>{resolveText(profile.title, locale)}</Text>
+            <View style={styles.headerContactRow}>
+              <Text style={styles.headerContactItem}>{profileLocation}</Text>
+              <Text style={styles.headerContactItem}>{profile.email}</Text>
+              <Text style={styles.headerContactItem}>{profile.phone}</Text>
+            </View>
+          </View>
+
+          {/* Profile Summary */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>{sectionLabels.profile[locale]}</Text>
+            </View>
+            <Text style={styles.profileText}>
+              {td(profile.summary as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')}
+            </Text>
+          </View>
+
+          {/* Experience Section */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>{sectionLabels.experience[locale]}</Text>
+            </View>
+            {mappedExperiences.slice(0, 3).map((job) => (
+              <JobEntry
+                key={job.id}
+                role={job.role}
+                company={job.company}
+                location={job.location}
+                period={job.period}
+                description={job.description}
+                achievements={job.achievements}
+                skills={job.skills}
+              />
+            ))}
+          </View>
+        </View>
+      </Page>
+
+      {/* Page 2 - More Experience */}
+      <Page size="A4" style={styles.page}>
+        {/* Sidebar continuation */}
+        <View style={[styles.sidebar, { backgroundColor: colors.gray800 }]}>
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarName}>{profile.displayName}</Text>
+            <Text style={[styles.sidebarTitle, { marginBottom: 25 }]}>Page 2</Text>
+          </View>
+
+          {/* Awards in sidebar */}
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarSectionTitle}>{sectionLabels.awards[locale]}</Text>
+            {awards.map((award) => (
+              <View key={award.id} style={{ marginBottom: 8 }}>
+                <Text style={[styles.languageName, { fontSize: 7, marginBottom: 1 }]}>
+                  {resolveText(award.title, locale)}
+                </Text>
+                <Text style={[styles.languageLevel, { fontSize: 6 }]}>
+                  {award.organization}
+                </Text>
+                <Text style={[styles.languageLevel, { fontSize: 6 }]}>
+                  {award.date}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* Main Content */}
+        <View style={styles.main}>
+          {/* Page Header */}
+          <View style={styles.pageHeader}>
+            <Text style={styles.pageHeaderName}>{profile.displayName}</Text>
+            <Text style={styles.pageHeaderPage}>{sectionLabels.experience[locale]} (continued)</Text>
+          </View>
+
+          {/* Continue Experience Section */}
+          {mappedExperiences.slice(3, 7).map((job) => (
             <JobEntry
               key={job.id}
               role={job.role}
@@ -389,110 +696,91 @@ const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
         </View>
       </Page>
 
-      {/* Page 2 - More Employment */}
+      {/* Page 3 - Remaining Experience, Internships, and Education */}
       <Page size="A4" style={styles.page}>
-        {mappedExperiences.slice(2, 6).map((job) => (
-          <JobEntry
-            key={job.id}
-            role={job.role}
-            company={job.company}
-            location={job.location}
-            period={job.period}
-            description={job.description}
-            achievements={job.achievements}
-            skills={job.skills}
-          />
-        ))}
-      </Page>
-
-      {/* Page 3 - More Employment */}
-      <Page size="A4" style={styles.page}>
-        {mappedExperiences.slice(6).map((job) => (
-          <JobEntry
-            key={job.id}
-            role={job.role}
-            company={job.company}
-            location={job.location}
-            period={job.period}
-            description={job.description}
-            achievements={job.achievements}
-            skills={job.skills}
-          />
-        ))}
-      </Page>
-
-      {/* Page 4 - Education, Languages, Awards, Internships */}
-      <Page size="A4" style={styles.page}>
-        {/* Education */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Education</Text>
-          {education.map((edu) => (
-            <View key={edu.id}>
-              <View style={styles.jobHeader}>
-                <Text style={styles.jobTitle}>{resolveText(edu.degree, locale)}</Text>
-                <Text style={styles.jobCompany}>{edu.institution} • {edu.location.city}, {edu.location.country}</Text>
-                <Text style={styles.jobDate}>{formatDateRange(edu.startDate, edu.endDate, locale)}</Text>
-              </View>
-              <View style={styles.bulletList}>
-                {edu.achievements.map((achievement) => (
-                  <View key={achievement.id} style={styles.bulletItem}>
-                    <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.bulletText}>{resolveText(achievement.text, locale)}</Text>
-                  </View>
-                ))}
-              </View>
-            </View>
-          ))}
-        </View>
-
-        {/* Languages */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Languages</Text>
-          <View style={styles.languageRow}>
-            {languages.map((lang) => (
-              <Text key={lang.id} style={styles.skillItem}>
-                {resolveText(lang.name, locale)} ({getLanguageLevelDisplay(lang.level, locale)})
-              </Text>
-            ))}
+        {/* Sidebar */}
+        <View style={[styles.sidebar, { backgroundColor: colors.gray800 }]}>
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarName}>{profile.displayName}</Text>
+            <Text style={[styles.sidebarTitle, { marginBottom: 25 }]}>Page 3</Text>
           </View>
         </View>
 
-        {/* Awards */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Awards & Honors</Text>
-          {awards.map((award) => (
-            <View key={award.id} style={styles.awardItem}>
-              <Text style={styles.awardTitle}>{resolveText(award.title, locale)}</Text>
-              <Text style={styles.awardDetails}>{award.date} | {award.organization}</Text>
-              <Text style={styles.paragraph}>{td(award.description as { cv?: string; coverLetter?: string; portfolio?: string }, locale, 'cv')}</Text>
-            </View>
-          ))}
-        </View>
+        {/* Main Content */}
+        <View style={styles.main}>
+          {/* Page Header */}
+          <View style={styles.pageHeader}>
+            <Text style={styles.pageHeaderName}>{profile.displayName}</Text>
+            <Text style={styles.pageHeaderPage}>Page 3</Text>
+          </View>
 
-        {/* Internships */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Internships</Text>
-          {mappedInternships.map((internship) => (
-            <View key={internship.id}>
-              <View style={styles.jobHeader}>
-                <Text style={styles.jobTitle}>{internship.role}</Text>
-                <Text style={styles.jobCompany}>{internship.company} • {internship.location}</Text>
-                <Text style={styles.jobDate}>{internship.period}</Text>
+          {/* Remaining Experience */}
+          {mappedExperiences.length > 7 && (
+            <View style={styles.section}>
+              <View style={styles.sectionHeader}>
+                <Text style={styles.sectionTitle}>{sectionLabels.experience[locale]} (continued)</Text>
               </View>
-              <Text style={styles.paragraph}>{internship.description}</Text>
-              <View style={styles.bulletList}>
-                {internship.achievements.map((achievement, aidx) => (
-                  <View key={aidx} style={styles.bulletItem}>
-                    <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.bulletText}>{achievement}</Text>
-                  </View>
-                ))}
-              </View>
-              {internship.skills && internship.skills.length > 0 && (
-                <Text style={styles.techStack}>Technologies: {internship.skills.join(', ')}</Text>
-              )}
+              {mappedExperiences.slice(7).map((job) => (
+                <JobEntry
+                  key={job.id}
+                  role={job.role}
+                  company={job.company}
+                  location={job.location}
+                  period={job.period}
+                  description={job.description}
+                  achievements={job.achievements}
+                  skills={job.skills}
+                  compact
+                />
+              ))}
             </View>
-          ))}
+          )}
+
+          {/* Internships */}
+          {mappedInternships.length > 0 && (
+            <View style={styles.section}>
+              <View style={styles.sectionHeader}>
+                <Text style={styles.sectionTitle}>{sectionLabels.internships[locale]}</Text>
+              </View>
+              {mappedInternships.map((internship) => (
+                <JobEntry
+                  key={internship.id}
+                  role={internship.role}
+                  company={internship.company}
+                  location={internship.location}
+                  period={internship.period}
+                  description={internship.description}
+                  achievements={internship.achievements}
+                  skills={internship.skills}
+                  compact
+                />
+              ))}
+            </View>
+          )}
+
+          {/* Education Section */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>{sectionLabels.education[locale]}</Text>
+            </View>
+            {education.map((edu) => (
+              <View key={edu.id} style={styles.educationItem}>
+                <Text style={styles.educationDegree}>{resolveText(edu.degree, locale)}</Text>
+                <Text style={styles.educationInstitution}>{edu.institution}</Text>
+                <Text style={styles.educationDetails}>
+                  {edu.location.city}, {edu.location.country} • {formatDateRange(edu.startDate, edu.endDate, locale)}
+                </Text>
+                <View style={[styles.bulletList, { marginTop: 3 }]}>
+                  {edu.achievements.slice(0, 2).map((achievement) => (
+                    <View key={achievement.id} style={styles.bulletItem}>
+                      <Text style={styles.bullet}>▸</Text>
+                      <Text style={styles.bulletText}>{resolveText(achievement.text, locale)}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            ))}
+          </View>
         </View>
       </Page>
     </Document>

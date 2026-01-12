@@ -3,11 +3,10 @@ import { X, Download, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import MarkdownViewer from './MarkdownViewer';
+import CVPreview from './CVPreview';
+import CoverLetterPreview from './CoverLetterPreview';
 import { CVDocument, CoverLetterDocument } from './pdf';
 import { useLocale } from '../contexts/locale.context';
-import cvContent from '../references/cv.md?raw';
-import coverLetterContent from '../references/cover-letter.md?raw';
 
 interface DocumentModalProps {
   type: 'cv' | 'cover-letter';
@@ -21,19 +20,19 @@ const DocumentModal: React.FC<DocumentModalProps> = ({ type, isOpen }) => {
   const config = useMemo(() => ({
     cv: {
       title: 'Curriculum Vitae',
-      content: cvContent,
+      preview: <CVPreview />,
       pdfDocument: <CVDocument locale={locale} />,
       filename: 'Bruno_Tachinardi_CV.pdf',
     },
     'cover-letter': {
       title: 'Cover Letter',
-      content: coverLetterContent,
+      preview: <CoverLetterPreview />,
       pdfDocument: <CoverLetterDocument locale={locale} />,
       filename: 'Bruno_Tachinardi_Cover_Letter.pdf',
     },
   }), [locale]);
 
-  const { title, content, pdfDocument, filename } = config[type];
+  const { title, preview, pdfDocument, filename } = config[type];
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -122,7 +121,7 @@ const DocumentModal: React.FC<DocumentModalProps> = ({ type, isOpen }) => {
 
             {/* Content */}
             <div className="p-6 md:p-10 max-h-[calc(100vh-12rem)] overflow-y-auto">
-              <MarkdownViewer content={content} />
+              {preview}
             </div>
           </motion.div>
         </motion.div>

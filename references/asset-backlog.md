@@ -167,30 +167,34 @@
 
 ---
 
-## EMBRYOLABS / VYTELLE
+## EMBRYOLABS (Product) / VYTELLE (Client)
 
-### Client: Vytelle (https://vytelle.com/)
+### Relationship: EmbryoLabs = Your Product, Vytelle = Client
 
-**Company:** Precision livestock biotechnology, cattle genetics AI
-**Status:** Public company, Series B funded ($20M April 2023)
+**Note:** EmbryoLabs was an internal AI platform built FOR Vytelle. Vytelle's public website shows their company/services but NOT the EmbryoLabs platform you built. Vytelle serves as client credibility only.
 
-| Asset | URL | Description |
-|-------|-----|-------------|
-| Homepage | https://vytelle.com/ | Company overview |
-| Platform | https://vytelle.com/our-platform | SENSE + ADVANCE + INSIGHT |
-| IVF Process | https://vytelle.com/ivf-process | Technical workflow |
-| LinkedIn | https://www.linkedin.com/company/vytelle | Logo + banner |
-| Drovers Article | https://www.drovers.com/news/education/vytelle-reshaping-cattle-genetics-precision-livestock-innovation | Industry coverage |
-| GEN News | https://www.genengnews.com/gen-edge/beefing-up-vytelle-is-accelerating-genetic-progress-to-preserve-dairy-and-meat-production/ | Tech coverage |
-| Lab Opening | https://www.startlandnews.com/2024/03/vytelle-nebraska/ | Lab photos |
+### Client Credibility (Vytelle)
 
-**EmbryoLabs Platform Assets (Internal - Need Permission):**
+| Asset | URL | Purpose |
+|-------|-----|---------|
+| Homepage | https://vytelle.com/ | Client credibility |
+| LinkedIn | https://www.linkedin.com/company/vytelle | Logo for client reference |
+| Press | https://www.genengnews.com/gen-edge/beefing-up-vytelle-is-accelerating-genetic-progress-to-preserve-dairy-and-meat-production/ | Shows client is legitimate |
+
+**Client Stats (for context):**
+- Series B funded ($20M April 2023)
+- 108 employees, 26 countries
+- World's largest multi-breed feed efficiency database
+
+### EmbryoLabs Platform Assets (FROM YOU - Internal)
+
+You will provide these assets:
 - [ ] Embryologist application screenshot (anonymized)
 - [ ] Admin dashboard screenshot
 - [ ] Video processing pipeline diagram
 - [ ] Performance improvement chart (13.2s → 4.2s = 68% reduction)
-- [ ] Frame selection algorithm visualization
-- [ ] Architecture diagram (cloud vs on-premise)
+- [ ] Frame selection algorithm visualization (Laplacian, circularity, LBP)
+- [ ] Architecture diagram (cloud vs on-premise deployment)
 
 ---
 
@@ -222,34 +226,90 @@
 
 ## HERDU
 
-### Status: No Public Presence
+### Status: PUBLIC LANDING PAGE LIVE
 
-**Internal URLs Found:**
-- Dashboard: https://dashboard.herdu.app/
-- Staging: https://web.staging.herdu.app/
-- Status: https://status.herdu.app/
+**URL:** https://dashboard.herdu.app/
 
-**Assets Needed (All Internal):**
-- [ ] HerdU logo
-- [ ] Manager dashboard screenshot
-- [ ] WhatsApp conversation flow mockup
-- [ ] Audio transcription interface
-- [ ] Task extraction visualization
-- [ ] Architecture diagram (WhatsApp API → Whisper → RAG → Dashboard)
+**Branding:**
+- Logo: Microphone with wheat/plant icon (green)
+- Tagline: "A gestão da sua fazenda" (The management of your farm)
+- Secondary: "Tecnologia feita por quem entende de fazenda"
+
+**Landing Page Sections (All Screenshottable):**
+
+| Section | Content | Screenshot Priority |
+|---------|---------|---------------------|
+| Hero | Logo, tagline, "Comece Grátis" CTA | HIGH |
+| Data Transform | WhatsApp message → Structured task cards (João/Maria/Pedro examples) | HIGH |
+| AI Summary | "Resumo do Dia" - AI-generated daily report | HIGH |
+| Task Management | 3 task cards with status (Pending/In Progress/Completed) and priority | HIGH |
+| Dual User Value | Features for Rural Worker vs Farm Manager | MEDIUM |
+| How It Works | 3-step process (Voice → Organize → Action) | MEDIUM |
+| Social Proof | Stats (90% accuracy, 3h+ saved, 24h offline) + testimonials | HIGH |
+| Footer | Product/Company/Legal links | LOW |
+
+**Key Stats Displayed:**
+- 90% accuracy (AI transcription)
+- 3h+ saved per day
+- 24h offline functionality
+
+**Testimonials:**
+- João Silva (Farm Manager)
+- Maria Santos (Field Employee)
+
+**Assets to Capture:**
+- [ ] Full landing page screenshot (scroll capture)
+- [ ] Hero section with logo
+- [ ] WhatsApp → Task transformation visual
+- [ ] AI-generated daily summary card
+- [ ] Task cards showing status workflow
+- [ ] Stats section (90%, 3h+, 24h)
+- [ ] Logo extraction (SVG if possible)
 
 ---
 
-## NUBANK
+## NUBANK (Client) / NUNOS (MVP Product)
 
-### Status: Major Brand (Limited Internal)
+### Relationship: Nunos = Your MVP, Nubank = Client
 
-**Public Assets:**
-- Nubank logo (publicly available)
-- Company website: https://nubank.com.br/
+**Note:** You worked as Product Innovation & Gamification Consultant on the Nunos MVP. The product was publicly announced in August 2022 and has press coverage, though UI screenshots are not publicly available.
 
-**Action:**
-- [ ] Create generic gamification concept diagram (no proprietary info)
-- [ ] Use public Nubank branding for recognition
+### Nunos Press Coverage (PUBLIC)
+
+| Source | URL | Content |
+|--------|-----|---------|
+| Startups.com.br | https://startups.com.br/negocios/brazils-nubank-launches-nunos-to-offer-rewards-through-gamification/ | English coverage |
+| StartSe | https://www.startse.com/artigos/nubank-entra-na-gamificacao-e-lanca-programa-de-recompensas-nunos/ | Launch announcement |
+| TechTudo | https://www.techtudo.com.br/listas/2022/08/nunos-do-nubank-o-que-saber-sobre-o-novo-programa-de-recompensas.ghtml | Feature overview |
+| Mobile Time | https://www.mobiletime.com.br/noticias/22/08/2022/nubank-lanca-programa-de-relacionamento/ | Industry coverage |
+| Exame | https://exame.com/invest/minhas-financas/nubank-lanca-primeiro-programa-gratuito-de-relacionamento-e-dara-recompensas-aos-clientes/ | Business coverage |
+| Nubank Blog | https://blog.nubank.com.br/nunos-nubank/ | Official announcement |
+| Thoughtworks Case Study | https://www.thoughtworks.com/en-us/clients/Nubank | Development methodology |
+
+**Key Facts (from press):**
+- Launched August 22, 2022
+- Gamification-based loyalty/rewards program
+- "Missions" tied to financial activities → unlock "Baú" (treasure chest) rewards
+- Name origin: "#sounu" sticker read upside down = "nunos"
+- Co-founder Cristina Junqueira quoted about the program
+- Currently paused (evolved to NuCoin)
+
+### Client Credibility (Nubank)
+
+| Asset | Purpose |
+|-------|---------|
+| Nubank logo | Client recognition (Brazil's largest digital bank) |
+| Press articles | Proof the MVP shipped and was announced |
+
+### Nunos Assets (FROM YOU - If Available)
+
+- [ ] Any internal screenshots or mockups you can share
+- [ ] Prototype designs from your work
+- [ ] Gamification concept diagrams you created
+
+**Fallback if no internal assets:**
+- Screenshot press articles as proof of shipped product
+- Create generic gamification flow diagram (non-proprietary)
 
 ---
 
