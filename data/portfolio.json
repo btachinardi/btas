@@ -127,7 +127,15 @@
     { "id": "adobe-suite", "name": "Adobe Creative Suite (Photoshop, Illustrator, After Effects, Premiere)", "categoryId": "product", "proficiency": 75 },
     { "id": "agile", "name": "Agile, MVP Development, A/B Testing", "categoryId": "product", "proficiency": 90 },
     { "id": "strategic-leadership", "name": "Strategic Leadership", "categoryId": "leadership", "proficiency": 95 },
-    { "id": "product-management", "name": "Product Management", "categoryId": "leadership", "proficiency": 95 }
+    { "id": "product-management", "name": "Product Management", "categoryId": "leadership", "proficiency": 95 },
+    { "id": "edge-deployment", "name": "Edge/Mobile ML Deployment", "categoryId": "ai-ml", "proficiency": 85 },
+    { "id": "data-engineering", "name": "Data Engineering & Collection", "categoryId": "backend", "proficiency": 80 },
+    { "id": "flash-actionscript", "name": "Flash/ActionScript", "categoryId": "frontend", "proficiency": 85 },
+    { "id": "scorm-lms", "name": "SCORM/LMS Integration", "categoryId": "backend", "proficiency": 75 },
+    { "id": "elearning-dev", "name": "E-Learning Development", "categoryId": "product", "proficiency": 80 },
+    { "id": "automation-scripting", "name": "Automation & Scripting", "categoryId": "devops", "proficiency": 70 },
+    { "id": "tool-development", "name": "Internal Tool Development", "categoryId": "backend", "proficiency": 75 },
+    { "id": "enterprise-solutions", "name": "Enterprise Solutions", "categoryId": "backend", "proficiency": 75 }
   ],
 
   "experiences": [
@@ -197,7 +205,7 @@
           }
         }
       ],
-      "skillIds": ["nodejs", "databases", "fhir-meds", "docker", "git"],
+      "skillIds": ["nodejs", "databases", "fhir-meds", "docker", "llm-integration"],
       "sortOrder": 0
     },
     {
@@ -335,7 +343,7 @@
           }
         }
       ],
-      "skillIds": ["nodejs", "react-vue", "deep-learning", "cloud-platforms", "docker"],
+      "skillIds": ["nodejs", "react-vue", "deep-learning", "cloud-platforms", "hipaa-lgpd"],
       "sortOrder": 2
     },
     {
@@ -471,7 +479,7 @@
           }
         }
       ],
-      "skillIds": ["llm-integration", "react-vue", "unity3d", "cloud-platforms", "hipaa-lgpd", "strategic-leadership"],
+      "skillIds": ["llm-integration", "strategic-leadership", "hipaa-lgpd", "product-management", "cloud-platforms"],
       "sortOrder": 4
     },
     {
@@ -532,7 +540,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "dotnet", "cicd", "strategic-leadership", "gamification"],
+      "skillIds": ["unity3d", "dotnet", "cicd", "gamification", "deep-learning"],
       "sortOrder": 5
     },
     {
@@ -600,7 +608,7 @@
           }
         }
       ],
-      "skillIds": ["deep-learning", "ml-tools"],
+      "skillIds": ["deep-learning", "ml-tools", "edge-deployment", "data-engineering", "strategic-leadership"],
       "sortOrder": 6
     },
     {
@@ -661,7 +669,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "ux-design", "agile"],
+      "skillIds": ["unity3d", "ux-design", "agile", "product-management", "strategic-leadership"],
       "sortOrder": 7
     },
     {
@@ -722,7 +730,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "gamification", "strategic-leadership"],
+      "skillIds": ["unity3d", "gamification", "strategic-leadership", "ux-design", "enterprise-solutions"],
       "sortOrder": 8
     },
     {
@@ -782,7 +790,7 @@
           }
         }
       ],
-      "skillIds": [],
+      "skillIds": ["flash-actionscript", "scorm-lms", "elearning-dev", "ux-design"],
       "sortOrder": 9
     },
     {
@@ -842,7 +850,7 @@
           }
         }
       ],
-      "skillIds": [],
+      "skillIds": ["flash-actionscript", "tool-development", "elearning-dev", "gamification", "strategic-leadership"],
       "sortOrder": 10
     }
   ],
@@ -1034,7 +1042,7 @@
           }
         }
       ],
-      "skillIds": []
+      "skillIds": ["flash-actionscript", "automation-scripting", "elearning-dev"]
     }
   ]
 }

@@ -15,7 +15,6 @@ import DocumentModal from './components/DocumentModal';
 const App: React.FC = () => {
   const location = useLocation();
   const isCVOpen = location.pathname === '/cv';
-  const isCoverLetterOpen = location.pathname === '/cover-letter';
 
   return (
     <LocaleProvider defaultLocale="en" defaultDocumentType="portfolio">
@@ -34,9 +33,8 @@ const App: React.FC = () => {
         </main>
       </div>
 
-      {/* Document Modals - Rendered on top based on route */}
+      {/* Document Modal - Rendered on top based on route */}
       <DocumentModal type="cv" isOpen={isCVOpen} />
-      <DocumentModal type="cover-letter" isOpen={isCoverLetterOpen} />
     </ScrollManagerProvider>
     </LocaleProvider>
   );

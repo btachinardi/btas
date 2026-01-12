@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import { MapPin, Calendar, Briefcase, Cpu, ChevronUp, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -9,8 +9,99 @@ import {
   useScrollManagerContext,
   useTimelineBall,
 } from '../hooks/scroll';
-import { useExperienceLegacy } from '../hooks';
+import { useExperienceLegacy, type LegacySkill } from '../hooks';
 import { useLegacyLocale } from '../contexts/locale.context';
+
+/**
+ * Maps category color names to Tailwind CSS classes
+ */
+const getCategoryColorClasses = (color: string): { bg: string; border: string; text: string; glow: string } => {
+  const colorMap: Record<string, { bg: string; border: string; text: string; glow: string }> = {
+    purple: {
+      bg: 'bg-purple-500/20',
+      border: 'border-purple-500/50 hover:border-purple-400',
+      text: 'text-purple-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]',
+    },
+    pink: {
+      bg: 'bg-pink-500/20',
+      border: 'border-pink-500/50 hover:border-pink-400',
+      text: 'text-pink-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(236,72,153,0.3)]',
+    },
+    blue: {
+      bg: 'bg-blue-500/20',
+      border: 'border-blue-500/50 hover:border-blue-400',
+      text: 'text-blue-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]',
+    },
+    cyan: {
+      bg: 'bg-cyan-500/20',
+      border: 'border-cyan-500/50 hover:border-cyan-400',
+      text: 'text-cyan-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(6,182,212,0.3)]',
+    },
+    red: {
+      bg: 'bg-red-500/20',
+      border: 'border-red-500/50 hover:border-red-400',
+      text: 'text-red-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]',
+    },
+    yellow: {
+      bg: 'bg-yellow-500/20',
+      border: 'border-yellow-500/50 hover:border-yellow-400',
+      text: 'text-yellow-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(234,179,8,0.3)]',
+    },
+    green: {
+      bg: 'bg-green-500/20',
+      border: 'border-green-500/50 hover:border-green-400',
+      text: 'text-green-200',
+      glow: 'hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]',
+    },
+  };
+  return colorMap[color] ?? {
+    bg: 'bg-slate-700/90',
+    border: 'border-slate-600/50 hover:border-slate-500',
+    text: 'text-slate-200',
+    glow: 'hover:shadow-[0_0_15px_rgba(100,116,139,0.3)]',
+  };
+};
+
+/**
+ * Renders a colored skill badge based on its category
+ */
+const SkillBadge: React.FC<{ skill: LegacySkill; animated?: boolean; index?: number; activeId?: number }> = ({
+  skill,
+  animated = false,
+  index = 0,
+  activeId = 0,
+}) => {
+  const colors = getCategoryColorClasses(skill.categoryColor);
+
+  if (animated) {
+    return (
+      <motion.span
+        key={`${activeId}-${skill.id}`}
+        initial={{ opacity: 0, scale: 0.8, x: -10 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        exit={{ opacity: 0, scale: 0.8, x: 10 }}
+        transition={{ duration: 0.2, delay: index * 0.03 }}
+        className={`px-4 py-2 text-sm font-semibold ${colors.text} ${colors.bg} border ${colors.border} rounded-xl shadow-sm ${colors.glow} transition-all cursor-default`}
+      >
+        {skill.name}
+      </motion.span>
+    );
+  }
+
+  return (
+    <span
+      className={`px-3 py-1 text-sm font-medium ${colors.text} ${colors.bg} border ${colors.border} rounded-lg transition-all`}
+    >
+      {skill.name}
+    </span>
+  );
+};
 
 const Experience: React.FC = () => {
   // Get data from centralized data system
@@ -28,9 +119,11 @@ const Experience: React.FC = () => {
   const [itemsBelow, setItemsBelow] = useState(0);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  // Timeline line bounds (calculated from first and last dot positions)
-  const [lineTop, setLineTop] = useState(42);
-  const [lineBottom, setLineBottom] = useState(68);
+  // Timeline visual state - calculated from DOM measurements
+  const [timelineReady, setTimelineReady] = useState(false);
+  const [lineStyle, setLineStyle] = useState({ top: 0, height: 0 });
+  const ballOffsetRef = useRef(0); // Offset needed to align ball with dots
+
 
   // Use sidebar sync hook for auto-scrolling
   useSidebarSync(sidebarRef, {
@@ -71,22 +164,62 @@ const Experience: React.FC = () => {
     const sidebarRect = sidebarRef.current.getBoundingClientRect();
     const dotRect = timelineDot.getBoundingClientRect();
 
-    // Target is the center of the dot, relative to the sidebar's scroll container
-    // dotRect gives us the dot's position in viewport coords
-    // We convert to content coords by: (viewport pos relative to sidebar) + scrollTop
+    // Calculate dot center position in content coordinates
     const dotTopInContent = dotRect.top - sidebarRect.top + sidebarRef.current.scrollTop;
-    // The ball's center should align with the dot's center
-    // Ball is 12px tall (w-3 h-3), so we position its top at (dotCenter - 6)
-    // But translateY is applied from top:0, so we just need the dot's center position
-    const targetY = dotTopInContent + dotRect.height / 2;
+    const dotCenterInContent = dotTopInContent + dotRect.height / 2;
 
-    setBallTarget(targetY);
+    // The ball (12px tall) needs its TOP positioned so its CENTER aligns with dot center
+    // Ball center = ball top + 6, so ball top = dot center - 6
+    const ballTopPosition = dotCenterInContent - 6;
+
+    setBallTarget(ballTopPosition);
   }, [activeId, setBallTarget]);
 
+  // Measure timeline dimensions from DOM - calculates line bounds and ball offset
+  const measureTimeline = useCallback(() => {
+    const sidebar = sidebarRef.current;
+    if (!sidebar || EXPERIENCE.length === 0) return;
+
+    const firstDot = sidebar.querySelector('[data-sidebar-index="0"] .timeline-dot') as HTMLElement;
+    const lastDot = sidebar.querySelector(`[data-sidebar-index="${EXPERIENCE.length - 1}"] .timeline-dot`) as HTMLElement;
+
+    if (!firstDot || !lastDot) return;
+
+    // Use getBoundingClientRect for accurate measurements
+    const sidebarRect = sidebar.getBoundingClientRect();
+    const firstDotRect = firstDot.getBoundingClientRect();
+    const lastDotRect = lastDot.getBoundingClientRect();
+
+    // Calculate positions in content coordinates (accounting for scroll)
+    const firstDotCenter = firstDotRect.top - sidebarRect.top + sidebar.scrollTop + firstDotRect.height / 2;
+    const lastDotCenter = lastDotRect.top - sidebarRect.top + sidebar.scrollTop + lastDotRect.height / 2;
+
+    // The -24 offset was empirically determined to align with actual dot positions
+    const visualOffset = -24;
+
+    // Set line style - spans from first dot center to last dot center (with offset)
+    setLineStyle({
+      top: firstDotCenter + visualOffset,
+      height: lastDotCenter - firstDotCenter,
+    });
+
+    // Ball uses the same offset
+    ballOffsetRef.current = visualOffset;
+
+    setTimelineReady(true);
+  }, [EXPERIENCE.length]);
+
   // Update ball position when active section changes
-  useEffect(() => {
+  useLayoutEffect(() => {
     updateBallPosition();
   }, [updateBallPosition]);
+
+  // Measure timeline on mount and when data changes
+  useLayoutEffect(() => {
+    measureTimeline();
+    window.addEventListener('resize', measureTimeline);
+    return () => window.removeEventListener('resize', measureTimeline);
+  }, [measureTimeline]);
 
   // Also update ball position when sidebar scrolls (from useSidebarSync auto-scroll)
   useEffect(() => {
@@ -101,44 +234,6 @@ const Experience: React.FC = () => {
     return () => sidebar.removeEventListener('scroll', handleScroll);
   }, [updateBallPosition]);
 
-  // Calculate timeline line bounds based on first and last dot positions
-  useEffect(() => {
-    if (!sidebarRef.current || EXPERIENCE.length === 0) return;
-
-    const calculateLineBounds = () => {
-      const sidebar = sidebarRef.current;
-      if (!sidebar) return;
-
-      const firstDot = sidebar.querySelector('[data-sidebar-index="0"] .timeline-dot') as HTMLElement;
-      const lastDot = sidebar.querySelector(`[data-sidebar-index="${EXPERIENCE.length - 1}"] .timeline-dot`) as HTMLElement;
-
-      if (!firstDot || !lastDot) return;
-
-      // Get positions relative to the sidebar's scroll content
-      const sidebarRect = sidebar.getBoundingClientRect();
-      const firstDotRect = firstDot.getBoundingClientRect();
-      const lastDotRect = lastDot.getBoundingClientRect();
-
-      // Calculate top position (center of first dot)
-      const firstDotCenter = firstDotRect.top - sidebarRect.top + sidebar.scrollTop + firstDotRect.height / 2;
-      // Calculate bottom position (distance from container bottom to center of last dot)
-      const lastDotCenter = lastDotRect.top - sidebarRect.top + sidebar.scrollTop + lastDotRect.height / 2;
-
-      // The line goes from firstDotCenter to lastDotCenter
-      // We use top and height instead of top and bottom for more predictable behavior
-      setLineTop(firstDotCenter);
-      // Calculate bottom as distance from container's scroll height
-      const scrollHeight = sidebar.scrollHeight;
-      setLineBottom(scrollHeight - lastDotCenter);
-    };
-
-    // Calculate on mount and when experience data changes
-    calculateLineBounds();
-
-    // Also recalculate on resize
-    window.addEventListener('resize', calculateLineBounds);
-    return () => window.removeEventListener('resize', calculateLineBounds);
-  }, [EXPERIENCE.length]);
 
   // Debug logging
   console.log('[Experience] Render state:', { activeSectionId, activeId, showSkillsBar });
@@ -331,17 +426,22 @@ const Experience: React.FC = () => {
                   className="relative space-y-6 pt-4 pb-12 pl-1 max-h-[calc(100vh-300px)] overflow-y-auto pr-4 scrollbar-hide scroll-smooth"
                   style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
-                  {/* Timeline line - starts at first circle center, ends at last circle center */}
+                  {/* Timeline line - spans from first to last dot center */}
                   <div
-                    className="absolute left-[23px] w-0.5 bg-slate-800 rounded-full pointer-events-none"
-                    style={{ top: `${lineTop}px`, bottom: `${lineBottom}px` }}
+                    className="absolute left-[23px] w-0.5 bg-slate-800 rounded-full pointer-events-none transition-opacity duration-200"
+                    style={{
+                      top: `${lineStyle.top}px`,
+                      height: `${lineStyle.height}px`,
+                      opacity: timelineReady ? 1 : 0,
+                    }}
                   />
 
                   {/* Floating ball that follows active item - procedural animation */}
                   <div
-                    className="absolute left-[18px] top-0 w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_rgba(14,165,233,0.8)] z-20 pointer-events-none"
+                    className="absolute left-[18px] top-0 w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_rgba(14,165,233,0.8)] z-20 pointer-events-none transition-opacity duration-200"
                     style={{
-                      transform: `translateY(${ballState.y - 6}px)`, // -6 to center the 12px ball
+                      transform: `translateY(${ballState.y + ballOffsetRef.current}px)`,
+                      opacity: timelineReady ? 1 : 0,
                       willChange: ballState.isAnimating ? 'transform' : 'auto',
                     }}
                   />
@@ -505,13 +605,8 @@ const Experience: React.FC = () => {
                           {t({ en: 'Applied Skills', pt: 'Habilidades Aplicadas', es: 'Habilidades Aplicadas' })}
                         </h4>
                         <div className="flex flex-wrap gap-2">
-                          {exp.skills.map((skill, idx) => (
-                            <span
-                              key={idx}
-                              className="px-3 py-1 text-sm font-medium text-slate-300 bg-slate-800 rounded"
-                            >
-                              {skill}
-                            </span>
+                          {exp.skills.map((skill) => (
+                            <SkillBadge key={skill.id} skill={skill} />
                           ))}
                         </div>
                       </div>
@@ -562,16 +657,13 @@ const Experience: React.FC = () => {
                   <div className="flex flex-wrap gap-2 flex-1 overflow-hidden">
                     <AnimatePresence mode="popLayout">
                       {currentExperience?.skills.map((skill, i) => (
-                        <motion.span
-                          key={`${activeId}-${skill}`}
-                          initial={{ opacity: 0, scale: 0.8, x: -10 }}
-                          animate={{ opacity: 1, scale: 1, x: 0 }}
-                          exit={{ opacity: 0, scale: 0.8, x: 10 }}
-                          transition={{ duration: 0.2, delay: i * 0.03 }}
-                          className="px-4 py-2 text-sm font-semibold text-white bg-slate-700/90 border border-primary/30 rounded-xl shadow-[0_0_10px_rgba(14,165,233,0.1)] hover:border-primary hover:bg-slate-600 hover:shadow-[0_0_15px_rgba(14,165,233,0.25)] transition-all cursor-default"
-                        >
-                          {skill}
-                        </motion.span>
+                        <SkillBadge
+                          key={`${activeId}-${skill.id}`}
+                          skill={skill}
+                          animated
+                          index={i}
+                          activeId={activeId}
+                        />
                       ))}
                     </AnimatePresence>
                   </div>

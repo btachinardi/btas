@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowDown, Linkedin, Mail, FileText, ScrollText, Github, Briefcase, Trophy, Globe2, MapPin } from 'lucide-react';
+import { ArrowDown, Linkedin, Mail, FileText, Github, Briefcase, Trophy, Globe2, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useProfile } from '../hooks/use-profile.hook';
@@ -229,11 +229,29 @@ const Hero: React.FC = () => {
 
                 {/* Photo container */}
                 <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-slate-700/50 shadow-2xl">
-                  <img
-                    src={profile.photo}
-                    alt={profile.displayName}
-                    className="w-full h-full object-cover"
-                  />
+                  <picture>
+                    <source
+                      type="image/avif"
+                      srcSet="/images/profile-128.avif 128w, /images/profile-256.avif 256w"
+                      sizes="(min-width: 768px) 128px, 96px"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet="/images/profile-128.webp 128w, /images/profile-256.webp 256w"
+                      sizes="(min-width: 768px) 128px, 96px"
+                    />
+                    <img
+                      src="/images/profile-256.png"
+                      srcSet="/images/profile-128.png 128w, /images/profile-256.png 256w"
+                      sizes="(min-width: 768px) 128px, 96px"
+                      alt={profile.displayName}
+                      width={128}
+                      height={128}
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </picture>
                 </div>
 
                 {/* Decorative ring */}
@@ -327,13 +345,6 @@ const Hero: React.FC = () => {
               >
                 <FileText size={18} className="text-primary group-hover:scale-110 transition-transform" />
                 {t({ en: 'View CV', pt: 'Ver Curriculo', es: 'Ver Curriculum' })}
-              </Link>
-              <Link
-                to="/cover-letter"
-                className="px-6 py-3 bg-card/80 hover:bg-card border border-slate-700 hover:border-slate-600 text-slate-200 hover:text-white font-medium rounded-lg transition-all flex items-center gap-2 group"
-              >
-                <ScrollText size={18} className="text-primary group-hover:scale-110 transition-transform" />
-                {t({ en: 'View Cover Letter', pt: 'Ver Carta de Apresentacao', es: 'Ver Carta de Presentacion' })}
               </Link>
             </motion.div>
           </div>
