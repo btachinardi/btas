@@ -121,8 +121,9 @@ const Experience: React.FC = () => {
 
   // Timeline visual state - calculated from DOM measurements
   const [timelineReady, setTimelineReady] = useState(false);
-  const [lineStyle, setLineStyle] = useState({ top: 0, height: 0 });
+  const [lineHeight, setLineHeight] = useState(0);
   const ballOffsetRef = useRef(0); // Offset needed to align ball with dots
+  const hasScrolledRef = useRef(false); // Track first scroll to force ball position
 
 
   // Use sidebar sync hook for auto-scrolling
@@ -133,7 +134,7 @@ const Experience: React.FC = () => {
   });
 
   // Procedural timeline ball animation - uses lerp for smooth following
-  const { state: ballState, setTarget: setBallTarget } = useTimelineBall({
+  const { state: ballState, setTarget: setBallTarget, snapTo: snapBallTo } = useTimelineBall({
     smoothFactor: 0.15, // Slightly faster than default for responsive feel
     useSpring: true,    // Spring physics for natural motion
     stiffness: 200,     // Responsive but not too snappy
@@ -175,39 +176,35 @@ const Experience: React.FC = () => {
     setBallTarget(ballTopPosition);
   }, [activeId, setBallTarget]);
 
-  // Measure timeline dimensions from DOM - calculates line bounds and ball offset
+  // Measure timeline dimensions from DOM - calculates ball offset and initial position
   const measureTimeline = useCallback(() => {
     const sidebar = sidebarRef.current;
     if (!sidebar || EXPERIENCE.length === 0) return;
 
-    const firstDot = sidebar.querySelector('[data-sidebar-index="0"] .timeline-dot') as HTMLElement;
-    const lastDot = sidebar.querySelector(`[data-sidebar-index="${EXPERIENCE.length - 1}"] .timeline-dot`) as HTMLElement;
-
-    if (!firstDot || !lastDot) return;
+    // Find the active dot (or first dot if none active)
+    const activeDot = sidebar.querySelector(`[data-sidebar-index="${activeId}"] .timeline-dot`) as HTMLElement;
+    if (!activeDot) return;
 
     // Use getBoundingClientRect for accurate measurements
     const sidebarRect = sidebar.getBoundingClientRect();
-    const firstDotRect = firstDot.getBoundingClientRect();
-    const lastDotRect = lastDot.getBoundingClientRect();
+    const dotRect = activeDot.getBoundingClientRect();
 
-    // Calculate positions in content coordinates (accounting for scroll)
-    const firstDotCenter = firstDotRect.top - sidebarRect.top + sidebar.scrollTop + firstDotRect.height / 2;
-    const lastDotCenter = lastDotRect.top - sidebarRect.top + sidebar.scrollTop + lastDotRect.height / 2;
+    // Calculate position in content coordinates
+    const dotTopInContent = dotRect.top - sidebarRect.top + sidebar.scrollTop;
+    const dotCenterInContent = dotTopInContent + dotRect.height / 2;
+    const ballTopPosition = dotCenterInContent - 6; // Center the 12px ball
 
     // The -24 offset was empirically determined to align with actual dot positions
-    const visualOffset = -24;
+    ballOffsetRef.current = -24;
 
-    // Set line style - spans from first dot center to last dot center (with offset)
-    setLineStyle({
-      top: firstDotCenter + visualOffset,
-      height: lastDotCenter - firstDotCenter,
-    });
+    // Set line height to full scrollable content height
+    setLineHeight(sidebar.scrollHeight);
 
-    // Ball uses the same offset
-    ballOffsetRef.current = visualOffset;
+    // Snap ball to correct position immediately (no animation on initial load)
+    snapBallTo(ballTopPosition);
 
     setTimelineReady(true);
-  }, [EXPERIENCE.length]);
+  }, [EXPERIENCE.length, activeId, snapBallTo]);
 
   // Update ball position when active section changes
   useLayoutEffect(() => {
@@ -215,10 +212,18 @@ const Experience: React.FC = () => {
   }, [updateBallPosition]);
 
   // Measure timeline on mount and when data changes
-  useLayoutEffect(() => {
-    measureTimeline();
+  useEffect(() => {
+    // Double rAF ensures DOM is fully rendered and painted
+    const rafId = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        measureTimeline();
+      });
+    });
     window.addEventListener('resize', measureTimeline);
-    return () => window.removeEventListener('resize', measureTimeline);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', measureTimeline);
+    };
   }, [measureTimeline]);
 
   // Also update ball position when sidebar scrolls (from useSidebarSync auto-scroll)
@@ -227,12 +232,34 @@ const Experience: React.FC = () => {
     if (!sidebar) return;
 
     const handleScroll = () => {
+      // On first scroll, force remeasure and snap to correct position
+      if (!hasScrolledRef.current) {
+        hasScrolledRef.current = true;
+        measureTimeline();
+      }
       updateBallPosition();
     };
 
     sidebar.addEventListener('scroll', handleScroll, { passive: true });
     return () => sidebar.removeEventListener('scroll', handleScroll);
-  }, [updateBallPosition]);
+  }, [updateBallPosition, measureTimeline]);
+
+  // Continuous ball position sync - ensures ball stays aligned with active item
+  useEffect(() => {
+    if (!timelineReady) return;
+
+    const syncBallPosition = () => {
+      updateBallPosition();
+    };
+
+    // Check position every 100ms to catch any drift
+    const intervalId = setInterval(syncBallPosition, 100);
+
+    // Also sync immediately
+    syncBallPosition();
+
+    return () => clearInterval(intervalId);
+  }, [timelineReady, updateBallPosition]);
 
 
   // Debug logging
@@ -426,14 +453,10 @@ const Experience: React.FC = () => {
                   className="relative space-y-6 pt-4 pb-12 pl-1 max-h-[calc(100vh-300px)] overflow-y-auto pr-4 scrollbar-hide scroll-smooth"
                   style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
-                  {/* Timeline line - spans from first to last dot center */}
+                  {/* Timeline line - spans full height of scrollable content */}
                   <div
-                    className="absolute left-[23px] w-0.5 bg-slate-800 rounded-full pointer-events-none transition-opacity duration-200"
-                    style={{
-                      top: `${lineStyle.top}px`,
-                      height: `${lineStyle.height}px`,
-                      opacity: timelineReady ? 1 : 0,
-                    }}
+                    className="absolute left-[23px] top-0 w-0.5 bg-slate-800 rounded-full pointer-events-none"
+                    style={{ height: `${lineHeight}px` }}
                   />
 
                   {/* Floating ball that follows active item - procedural animation */}
@@ -555,9 +578,9 @@ const Experience: React.FC = () => {
                           </div>
                         </div>
 
-                        <div className="flex flex-col gap-2 text-slate-500 text-base font-medium sm:text-right">
-                          <div className="flex items-center sm:justify-end gap-2">
-                            <Calendar size={16} />
+                        <div className="flex flex-col gap-2 text-slate-500 text-base font-medium sm:text-right shrink-0">
+                          <div className="flex items-center sm:justify-end gap-2 whitespace-nowrap">
+                            <Calendar size={16} className="shrink-0" />
                             {exp.period}
                           </div>
                           <div className="flex items-center sm:justify-end gap-2">
@@ -653,18 +676,28 @@ const Experience: React.FC = () => {
                   {/* Divider */}
                   <div className="w-px h-12 bg-gradient-to-b from-transparent via-primary/50 to-transparent" />
 
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2 flex-1 overflow-hidden">
-                    <AnimatePresence mode="popLayout">
-                      {currentExperience?.skills.map((skill, i) => (
-                        <SkillBadge
-                          key={`${activeId}-${skill.id}`}
-                          skill={skill}
-                          animated
-                          index={i}
-                          activeId={activeId}
-                        />
-                      ))}
+                  {/* Skills - animate container as a whole to prevent layout thrashing */}
+                  <div className="flex-1 overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeId}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex flex-wrap gap-2"
+                      >
+                        {currentExperience?.skills.map((skill, i) => (
+                          <motion.span
+                            key={skill.id}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.15, delay: i * 0.02 }}
+                          >
+                            <SkillBadge skill={skill} />
+                          </motion.span>
+                        ))}
+                      </motion.div>
                     </AnimatePresence>
                   </div>
                 </div>
