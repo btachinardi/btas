@@ -15,7 +15,7 @@
     "email": "brunotachinardi@gmail.com",
     "phone": "+55 (11) 99173-0713",
     "location": {
-      "city": "Sao Paulo",
+      "city": "São Paulo",
       "country": "Brazil",
       "isRemote": false
     },
@@ -283,6 +283,19 @@
         }
       ],
       "skillIds": ["mcp", "fhir", "meds", "nextflow", "python", "openapi", "rest-api", "data-engineering", "ux-design", "strategic-leadership", "docker", "git"],
+      "media": [],
+      "externalLinks": [
+        {
+          "type": "client",
+          "label": "UC Cincinnati BHIDS",
+          "url": "https://med.uc.edu/depart/bhd"
+        }
+      ],
+      "client": {
+        "name": "University of Cincinnati",
+        "department": "BHIDS Department",
+        "logoUrl": null
+      },
       "sortOrder": 0
     },
     {
@@ -290,7 +303,7 @@
       "company": {
         "name": "HerdU",
         "logoUrl": null,
-        "websiteUrl": null,
+        "websiteUrl": "https://dashboard.herdu.app/",
         "industry": "AgTech"
       },
       "roles": [
@@ -299,8 +312,8 @@
           "title": "experience.herdu-2025.roles.herdu-tech-lead.title",
           "employmentType": "contract",
           "startDate": "2025-08",
-          "endDate": "2026-01",
-          "isCurrent": false
+          "endDate": null,
+          "isCurrent": true
         }
       ],
       "location": {
@@ -352,15 +365,24 @@
         }
       ],
       "skillIds": ["nestjs", "nodejs", "typescript", "react", "postgresql", "whatsapp-business-api", "openai-whisper", "openai-api", "langchain", "rag", "docker", "docker-compose", "rest-api", "strategic-leadership", "product-management", "git"],
+      "media": [],
+      "externalLinks": [
+        {
+          "type": "website",
+          "label": "HerdU Platform",
+          "url": "https://dashboard.herdu.app/"
+        }
+      ],
+      "client": null,
       "sortOrder": 1
     },
     {
       "id": "embryolabs-2024",
       "company": {
-        "name": "EmbryoLabs",
+        "name": "Vytelle",
         "logoUrl": null,
-        "websiteUrl": null,
-        "industry": "Healthcare / AI"
+        "websiteUrl": "https://vytelle.com/",
+        "industry": "AgTech / AI"
       },
       "roles": [
         {
@@ -421,6 +443,18 @@
         }
       ],
       "skillIds": ["tensorflow", "keras", "cnn", "python", "typescript", "react", "nestjs", "nodejs", "postgresql", "azure", "docker", "docker-compose", "rest-api", "openapi", "json", "git", "hipaa", "lgpd", "strategic-leadership", "product-management", "figma", "ux-design"],
+      "media": [],
+      "externalLinks": [
+        {
+          "type": "client",
+          "label": "Vytelle",
+          "url": "https://vytelle.com/"
+        }
+      ],
+      "client": {
+        "name": "Vytelle",
+        "logoUrl": null
+      },
       "sortOrder": 2
     },
     {
@@ -442,7 +476,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -482,6 +516,28 @@
         }
       ],
       "skillIds": ["figma", "mvp-development", "ab-testing", "design-thinking", "gamification", "ux-design", "agile", "product-management", "strategic-leadership"],
+      "media": [],
+      "externalLinks": [
+        {
+          "type": "press",
+          "label": "Nubank Blog",
+          "url": "https://blog.nubank.com.br/nunos-nubank/"
+        },
+        {
+          "type": "press",
+          "label": "Exame",
+          "url": "https://exame.com/invest/minhas-financas/nubank-lanca-primeiro-programa-gratuito-de-relacionamento-e-dara-recompensas-aos-clientes/"
+        },
+        {
+          "type": "case-study",
+          "label": "Thoughtworks Case Study",
+          "url": "https://www.thoughtworks.com/en-us/clients/Nubank"
+        }
+      ],
+      "client": {
+        "name": "Nubank",
+        "logoUrl": null
+      },
       "sortOrder": 3
     },
     {
@@ -503,7 +559,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -557,6 +613,25 @@
         }
       ],
       "skillIds": ["strategic-leadership", "product-management", "lgpd", "hipaa", "openai-api", "langchain", "rag", "gamification", "ab-testing", "mvp-development", "agile", "design-thinking", "data-security"],
+      "media": [],
+      "externalLinks": [
+        {
+          "type": "website",
+          "label": "Fofuuu Website",
+          "url": "https://fofuuu.com/"
+        },
+        {
+          "type": "app-store",
+          "label": "Fofuuu Edu (iOS)",
+          "url": "https://apps.apple.com/us/app/fofuuu-edu/id1563944759"
+        },
+        {
+          "type": "app-store",
+          "label": "Fofuuu Edu (Android)",
+          "url": "https://play.google.com/store/apps/details?id=com.app.fofuuu"
+        }
+      ],
+      "client": null,
       "sortOrder": 4
     },
     {
@@ -578,7 +653,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -639,7 +714,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -707,7 +782,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -768,7 +843,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -829,7 +904,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -889,7 +964,7 @@
         }
       ],
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },
@@ -948,7 +1023,7 @@
     {
       "id": "covid-rapid-2020",
       "title": "award.covid-rapid-2020.title",
-      "organization": "City of Sao Paulo",
+      "organization": "City of São Paulo",
       "date": "2020",
       "description": {
         "cv": "award.covid-rapid-2020.description.cv",
@@ -1040,6 +1115,66 @@
       },
       "link": "https://gizbr.uol.com.br/com-premio-no-big-festival-fofuu-mostra-que-games-podem-ser-muito-mais-do-que-apenas-entretenimento/",
       "investment": "20000 BRL"
+    },
+    {
+      "id": "eurofarma-synapsis-2018",
+      "title": "award.eurofarma-synapsis-2018.title",
+      "organization": "Eurofarma",
+      "date": "2018",
+      "description": {
+        "cv": "award.eurofarma-synapsis-2018.description.cv",
+        "portfolio": "award.eurofarma-synapsis-2018.description.portfolio"
+      },
+      "link": null,
+      "investment": null
+    },
+    {
+      "id": "baanko-challenge-2016",
+      "title": "award.baanko-challenge-2016.title",
+      "organization": "Baanko Challenge",
+      "date": "2016",
+      "description": {
+        "cv": "award.baanko-challenge-2016.description.cv",
+        "portfolio": "award.baanko-challenge-2016.description.portfolio"
+      },
+      "link": null,
+      "investment": null
+    }
+  ],
+
+  "publications": [
+    {
+      "id": "phonenet-2018",
+      "title": "publication.phonenet-2018.title",
+      "venue": "26th Brazilian Congress of Speech Therapy (CBFa)",
+      "date": "2018-10",
+      "description": {
+        "cv": "publication.phonenet-2018.description.cv",
+        "portfolio": "publication.phonenet-2018.description.portfolio"
+      },
+      "link": "/publications/forl-2018-phonenet.pdf#page=127"
+    },
+    {
+      "id": "orofacial-therapy-2017",
+      "title": "publication.orofacial-therapy-2017.title",
+      "venue": "16th Congress of the Otorhinolaryngology Foundation",
+      "date": "2017-08",
+      "description": {
+        "cv": "publication.orofacial-therapy-2017.description.cv",
+        "portfolio": "publication.orofacial-therapy-2017.description.portfolio"
+      },
+      "link": "/publications/forl-2017-orofacial.pdf#page=95"
+    },
+    {
+      "id": "game-competitive-2011",
+      "title": "publication.game-competitive-2011.title",
+      "venue": "SBGames",
+      "date": "2011-11",
+      "description": {
+        "cv": "publication.game-competitive-2011.description.cv",
+        "portfolio": "publication.game-competitive-2011.description.portfolio"
+      },
+      "link": null
     }
   ],
 
@@ -1049,7 +1184,7 @@
       "degree": "education.anhembi-game-design.degree",
       "institution": "Anhembi Morumbi University",
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil"
       },
       "startDate": "2008-01",
@@ -1088,7 +1223,7 @@
       "startDate": "2010-10",
       "endDate": "2011-05",
       "location": {
-        "city": "Sao Paulo",
+        "city": "São Paulo",
         "country": "Brazil",
         "isRemote": false
       },

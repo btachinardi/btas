@@ -99,6 +99,7 @@ export interface PortfolioData {
   skills: Skill[];
   experiences: Experience[];
   awards: Award[];
+  publications: Publication[];
   education: Education[];
   internships: Internship[];
 }
@@ -225,6 +226,18 @@ export interface Award {
   description: DocumentVariantKeys;
   link: string | null;
   investment: string | null;
+}
+
+/** Academic publication */
+export interface Publication {
+  id: string;
+  /** Translation key for publication title */
+  title: TranslationKey;
+  venue: string;
+  date: string;
+  /** Translation keys for description variants */
+  description: DocumentVariantKeys;
+  link: string | null;
 }
 
 /** Educational qualification */
