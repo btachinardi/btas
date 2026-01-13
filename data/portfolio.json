@@ -612,23 +612,40 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "strategic-leadership", "product-management", "lgpd", "hipaa", "openai-api", "langchain", "rag", "gamification", "ab-testing", "mvp-development", "agile", "design-thinking", "data-security"],
+      "skillIds": ["strategic-leadership", "product-management", "lgpd", "hipaa", "ab-testing", "mvp-development", "agile", "design-thinking", "data-security"],
+      "projects": [
+        {
+          "id": "fofuuu-edu",
+          "name": "Fofuuu Edu",
+          "skillIds": ["unity3d", "csharp", "gamification", "ios", "android", "cross-platform"],
+          "externalLinks": [
+            {
+              "type": "app-store",
+              "label": "App Store (iOS)",
+              "url": "https://apps.apple.com/us/app/fofuuu-edu/id1563944759"
+            },
+            {
+              "type": "app-store",
+              "label": "Play Store (Android)",
+              "url": "https://play.google.com/store/apps/details?id=com.app.fofuuu"
+            }
+          ],
+          "media": []
+        },
+        {
+          "id": "fofuuu-for-clinics",
+          "name": "Fofuuu for Clinics",
+          "skillIds": ["vue", "dotnet-core", "azure", "sql-server", "openai-api", "langchain", "rag"],
+          "externalLinks": [],
+          "media": []
+        }
+      ],
       "media": [],
       "externalLinks": [
         {
           "type": "website",
           "label": "Fofuuu Website",
           "url": "https://fofuuu.com/"
-        },
-        {
-          "type": "app-store",
-          "label": "Fofuuu Edu (iOS)",
-          "url": "https://apps.apple.com/us/app/fofuuu-edu/id1563944759"
-        },
-        {
-          "type": "app-store",
-          "label": "Fofuuu Edu (Android)",
-          "url": "https://play.google.com/store/apps/details?id=com.app.fofuuu"
         }
       ],
       "client": null,
@@ -692,7 +709,30 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "ios", "android", "cross-platform", "github-actions", "agile", "mel-spectrograms", "signal-processing", "gamification", "git", "git-flow", "strategic-leadership", "product-management"],
+      "skillIds": ["strategic-leadership", "product-management", "github-actions", "agile", "git", "git-flow"],
+      "projects": [
+        {
+          "id": "fofuuu-fono",
+          "name": "Fofuuu Fono",
+          "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "ios", "android", "cross-platform", "mel-spectrograms", "signal-processing", "gamification"],
+          "externalLinks": [
+            {
+              "type": "app-store",
+              "label": "App Store (iOS)",
+              "url": "https://apps.apple.com/br/app/fofuuu-fono/id1317143409"
+            },
+            {
+              "type": "app-store",
+              "label": "Play Store (Android)",
+              "url": "https://play.google.com/store/apps/details?id=com.fofuuu.apps.therapist"
+            }
+          ],
+          "media": []
+        }
+      ],
+      "media": [],
+      "externalLinks": [],
+      "client": null,
       "sortOrder": 5
     },
     {
@@ -760,7 +800,32 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "resnet", "cnn", "mel-spectrograms", "signal-processing", "edge-mobile-ml", "data-engineering", "tensorflow", "keras", "python", "jupyter-notebook"],
+      "skillIds": ["data-engineering"],
+      "projects": [
+        {
+          "id": "phonenet",
+          "name": "PhoneNet",
+          "skillIds": ["resnet", "cnn", "mel-spectrograms", "signal-processing", "edge-mobile-ml", "tensorflow", "keras", "python", "jupyter-notebook"],
+          "externalLinks": [
+            {
+              "type": "press",
+              "label": "Publication (CBFa 2018)",
+              "url": "/publications/forl-2018-phonenet.pdf#page=127"
+            }
+          ],
+          "media": []
+        },
+        {
+          "id": "donate-your-voice",
+          "name": "Donate Your Voice Campaign",
+          "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "data-engineering"],
+          "externalLinks": [],
+          "media": []
+        }
+      ],
+      "media": [],
+      "externalLinks": [],
+      "client": null,
       "sortOrder": 6
     },
     {
@@ -821,7 +886,19 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "strategic-leadership", "product-management", "signal-processing", "mvp-development", "design-thinking", "ux-design", "agile"],
+      "skillIds": ["strategic-leadership", "product-management", "mvp-development", "design-thinking", "ux-design", "agile"],
+      "projects": [
+        {
+          "id": "fofuuu-prototype",
+          "name": "Fofuuu Prototype",
+          "skillIds": ["unity3d", "csharp", "signal-processing"],
+          "externalLinks": [],
+          "media": []
+        }
+      ],
+      "media": [],
+      "externalLinks": [],
+      "client": null,
       "sortOrder": 7
     },
     {
