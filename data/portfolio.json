@@ -442,7 +442,7 @@
           }
         }
       ],
-      "skillIds": ["tensorflow", "keras", "cnn", "python", "typescript", "react", "nestjs", "nodejs", "postgresql", "azure", "docker", "docker-compose", "rest-api", "openapi", "json", "git", "hipaa", "lgpd", "strategic-leadership", "product-management", "figma", "ux-design"],
+      "skillIds": ["tensorflow", "keras", "cnn", "python", "typescript", "react", "nestjs", "nodejs", "postgresql", "azure", "docker", "docker-compose", "rest-api", "openapi", "json", "git", "strategic-leadership", "product-management", "figma", "ux-design"],
       "media": [],
       "externalLinks": [
         {
@@ -612,7 +612,7 @@
           }
         }
       ],
-      "skillIds": ["strategic-leadership", "product-management", "lgpd", "hipaa", "openai-api", "langchain", "rag", "gamification", "ab-testing", "mvp-development", "agile", "design-thinking", "data-security"],
+      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "strategic-leadership", "product-management", "lgpd", "hipaa", "openai-api", "langchain", "rag", "gamification", "ab-testing", "mvp-development", "agile", "design-thinking", "data-security"],
       "media": [],
       "externalLinks": [
         {
@@ -692,7 +692,7 @@
           }
         }
       ],
-      "skillIds": ["unity3d", "csharp", "ios", "android", "cross-platform", "github-actions", "agile", "mel-spectrograms", "signal-processing", "gamification", "git", "git-flow", "strategic-leadership", "product-management"],
+      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "ios", "android", "cross-platform", "github-actions", "agile", "mel-spectrograms", "signal-processing", "gamification", "git", "git-flow", "strategic-leadership", "product-management"],
       "sortOrder": 5
     },
     {
@@ -760,7 +760,7 @@
           }
         }
       ],
-      "skillIds": ["resnet", "cnn", "mel-spectrograms", "signal-processing", "edge-mobile-ml", "data-engineering", "tensorflow", "keras", "python", "jupyter-notebook"],
+      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "resnet", "cnn", "mel-spectrograms", "signal-processing", "edge-mobile-ml", "data-engineering", "tensorflow", "keras", "python", "jupyter-notebook"],
       "sortOrder": 6
     },
     {
@@ -821,7 +821,7 @@
           }
         }
       ],
-      "skillIds": ["strategic-leadership", "product-management", "signal-processing", "mvp-development", "design-thinking", "ux-design", "agile", "unity3d", "csharp"],
+      "skillIds": ["unity3d", "csharp", "dotnet-core", "vue", "azure", "sql-server", "strategic-leadership", "product-management", "signal-processing", "mvp-development", "design-thinking", "ux-design", "agile"],
       "sortOrder": 7
     },
     {
