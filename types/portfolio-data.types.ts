@@ -188,8 +188,56 @@ export interface Experience {
   /** Translation keys for description variants */
   description: DocumentVariantKeys;
   achievements: Achievement[];
+  /** Role-level skills (leadership, strategy, etc.) */
   skillIds: string[];
+  /** Projects/products worked on in this role */
+  projects?: Project[];
+  /** Media assets for this experience */
+  media?: Media[];
+  /** External links (websites, app stores, press) */
+  externalLinks?: ExternalLink[];
+  /** Client information for client work */
+  client?: Client | null;
   sortOrder: number;
+}
+
+/** Project or product within an experience */
+export interface Project {
+  id: string;
+  name: string;
+  /** Translation keys for project description */
+  description?: DocumentVariantKeys;
+  /** Project-specific technical skills */
+  skillIds: string[];
+  /** Project-specific achievements */
+  achievements?: Achievement[];
+  /** Media assets for this project */
+  media?: Media[];
+  /** External links for this project */
+  externalLinks?: ExternalLink[];
+}
+
+/** External link (app store, website, press, etc.) */
+export interface ExternalLink {
+  type: 'website' | 'app-store' | 'press' | 'case-study' | 'client' | 'demo' | 'video';
+  label: string;
+  url: string;
+}
+
+/** Media asset (screenshot, image, video thumbnail) */
+export interface Media {
+  id: string;
+  type: 'screenshot' | 'image' | 'video-thumbnail' | 'logo';
+  url: string;
+  alt: string;
+  caption?: string;
+}
+
+/** Client information for client work */
+export interface Client {
+  name: string;
+  department?: string;
+  logoUrl: string | null;
 }
 
 export interface Company {
